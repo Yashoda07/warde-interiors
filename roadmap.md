@@ -1,0 +1,5 @@
+- [x] Create Warde visual foundation and temporary imagery.
+- [ ] Build all public pages and responsive navigation.
+- [ ] Add validated, spam-aware project enquiry submission with private storage.
+- [ ] Add page-specific metadata and verify routes, form, and mobile rendering.
+- [ ] Finish email delivery only after the studio domain and recipient are supplied.
