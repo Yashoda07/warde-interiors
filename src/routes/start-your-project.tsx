@@ -85,8 +85,8 @@ function StartYourProjectPage() {
         </label>)}
         <label className="form-field form-field--wide">
           <span>Tell us a little more</span>
-          <Textarea name="project_description" rows={5} maxLength={2000} aria-invalid={Boolean(errors.project_description)} aria-describedby={errors.project_description ? "project_description-error" : undefined} />
-          {errors.project_description && <small id="project_description-error" className="field-error">{errors.project_description}</small>}
+          <Textarea name="project_description" rows={5} maxLength={2000} aria-invalid={Boolean(errors["project_description"])} aria-describedby={errors["project_description"] ? "project_description-error" : undefined} />
+          {errors["project_description"] && <small id="project_description-error" className="field-error">{errors["project_description"]}</small>}
         </label>
         <label className="form-honeypot" aria-hidden="true" tabIndex={-1}>
           <span>Website</span><Input name="website" autoComplete="off" tabIndex={-1} />
