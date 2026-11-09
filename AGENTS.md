@@ -31,3 +31,4 @@ use the editor.
 
 ## Project structure
 - Keep public page routes thin and compose them from shared, reusable Warde site sections so navigation and visual identity stay consistent across pages.
+- Keep leaf routes as thin wrappers around shared page sections and metadata helpers, so public pages stay consistent and easy to maintain.
