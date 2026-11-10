@@ -101,7 +101,7 @@ export function HomePage() {
 
     <section id="introduction" className="intro-section section-wrap">
       <div className="intro-copy"><p className="eyebrow">A MORE PERSONAL WAY TO DESIGN</p><h2>Design that begins<br /> with understanding.</h2><p>Every space starts with the people who live in it. Your routines, practical needs, storage and personal preferences shape a home that looks considered and feels effortless to live in.</p><Link to="/about" className="text-link">Meet the studio <ArrowRight aria-hidden="true" /></Link></div>
-      <figure className="intro-image"><img src={diningImage} alt="Temporary illustrative dining room interior in warm natural materials" width={1280} height={1600} loading="lazy" /><figcaption>Illustrative interior image · studio photography to be added</figcaption></figure>
+      <figure className="intro-image"><img src={warde-portrait1} alt="Samiksha Warde's Portrait" width={1280} height={1600} loading="lazy" /><figcaption>Illustrative interior image · studio photography to be added</figcaption></figure>
     </section>
 
     <section className="selected-section section-wrap"><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={3} /></section>
