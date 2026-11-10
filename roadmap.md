@@ -2,4 +2,5 @@
 - [x] Build all public pages and responsive navigation.
 - [x] Add validated, spam-aware project enquiry submission with private storage.
 - [x] Add page-specific metadata and verify routes, form, and mobile rendering.
+- [ ] Apply the requested Warde website enhancements: founder portraits/about page, six project placeholders, service imagery, curved process, accessible FAQ, safe testimonial placeholders, and modal enquiry/contact details.
 - [ ] Finish email delivery only after the studio domain and recipient are supplied.
