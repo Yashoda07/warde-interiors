@@ -198,8 +198,11 @@ const demoTestimonials = [
 ];
 
 function TestimonialRow({ items, direction }: { items: typeof demoTestimonials; direction: "left" | "right" }) {
-  const repeated = [...items, ...items];
-  return <div className={`testimonial-marquee testimonial-marquee--${direction}`}><div className="testimonial-track">{repeated.map((item, index) => <article className="testimonial-demo" key={`${item.name}-${index}`}><span className="quote-mark" aria-hidden="true">“</span><p>{item.quote}</p><div><span aria-hidden="true">{item.name.slice(-2)}</span><p><strong>{item.name}</strong><small>{item.location}</small></p></div></article>)}</div></div>;
+  return <div className={`testimonial-marquee testimonial-marquee--${direction}`}><div className="testimonial-track"><div className="testimonial-group">{items.map((item) => <TestimonialCard item={item} key={item.name} />)}</div><div className="testimonial-group" aria-hidden="true">{items.map((item) => <TestimonialCard item={item} key={`${item.name}-loop`} />)}</div></div></div>;
+}
+
+function TestimonialCard({ item }: { item: (typeof demoTestimonials)[number] }) {
+  return <article className="testimonial-demo"><span className="quote-mark" aria-hidden="true">“</span><p>{item.quote}</p><div><span aria-hidden="true">{item.name.slice(-2)}</span><p><strong>{item.name}</strong><small>{item.location}</small></p></div></article>;
 }
 
 function TestimonialsMarquee() {
