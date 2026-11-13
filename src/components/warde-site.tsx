@@ -112,7 +112,7 @@ export function HomePage() {
 
     <section className="philosophy-section"><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Link to="/process" className="text-link">Explore our process <ArrowRight aria-hidden="true" /></Link></div><figure className="philosophy-image"><img src={readingImage} alt="Temporary illustrative reading nook with considered built-in joinery" width={1280} height={1600} loading="lazy" /><figcaption>Illustrative interior image · studio photography to be added</figcaption></figure></section>
 
-    <section className="services-peek section-wrap"><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><div className="service-lines">{["End-to-End Interior Design", "Colour Consultancy", "3D Design Consultancy"].map((name, index) => <Link to="/services" className="service-line" key={name}><span className="eyebrow">0{index + 1}</span><h3>{name}</h3><ArrowUpRight aria-hidden="true" /></Link>)}</div></section>
+    <section className="services-peek section-wrap"><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
 
     <section className="process-peek"><div className="section-wrap"><div className="section-heading-row"><div><p className="eyebrow">A CLEAR, CONSIDERED JOURNEY</p><h2>From vision to reality</h2></div><Link to="/process" className="text-link">See how we work <ArrowRight aria-hidden="true" /></Link></div><CurvedProcess steps={steps} /></div></section>
 
@@ -148,8 +148,12 @@ export function AboutUsPage() {
 }
 
 export function ServicesPage() {
+  return <main><PageIntro eyebrow="WAYS TO WORK TOGETHER" title="Services" lead="Thoughtful design support for the decisions that shape a home." /><ServiceImageGrid /><EnquiryCta compact /></main>;
+}
+
+function ServiceImageGrid({ compact = false }: { compact?: boolean }) {
   const services = [{ number: "01", name: "End-to-End Interior Design", copy: "Complete interior-design services from initial consultation and concept development through design coordination and execution.", image: heroImage }, { number: "02", name: "Colour Consultancy", copy: "A completely virtual service helping clients select appropriate colour palettes for their spaces.", image: diningImage }, { number: "03", name: "3D Design Consultancy", copy: "3D visualisation and design consultancy for clients who want to understand and visualise their space before execution.", image: bedroomImage }];
-  return <main><PageIntro eyebrow="WAYS TO WORK TOGETHER" title="Services" lead="Thoughtful design support for the decisions that shape a home." /><section className="service-page-list service-image-grid section-wrap">{services.map((service) => <article className="service-image-item" key={service.number}><figure><img src={service.image} alt={`Illustrative interior image for ${service.name}; not a completed Warde Interiors project`} loading="lazy" /><figcaption>Illustrative image · studio photography to be added</figcaption></figure><span className="service-gold-rule" /><p className="eyebrow">{service.number}</p><h2>{service.name}</h2><p>{service.copy}</p><Link to="/start-your-project" className="text-link">Tell us what you have in mind <ArrowRight aria-hidden="true" /></Link></article>)}</section><EnquiryCta compact /></main>;
+  return <section className={`service-image-grid section-wrap${compact ? " service-image-grid--compact" : ""}`}>{services.map((service) => <article className="service-image-item" key={service.number}><figure><img src={service.image} alt={`Illustrative interior image for ${service.name}; not a completed Warde Interiors project`} loading="lazy" /><figcaption>Illustrative image · studio photography to be added</figcaption></figure><span className="service-gold-rule" /><p className="eyebrow">{service.number}</p><h2>{service.name}</h2><p>{service.copy}</p>{!compact && <Link to="/start-your-project" className="text-link">Tell us what you have in mind <ArrowRight aria-hidden="true" /></Link>}</article>)}</section>;
 }
 
 export function ProcessPage() {
@@ -198,8 +202,11 @@ const demoTestimonials = [
 ];
 
 function TestimonialRow({ items, direction }: { items: typeof demoTestimonials; direction: "left" | "right" }) {
-  const repeated = [...items, ...items];
-  return <div className={`testimonial-marquee testimonial-marquee--${direction}`}><div className="testimonial-track">{repeated.map((item, index) => <article className="testimonial-demo" key={`${item.name}-${index}`}><span className="quote-mark" aria-hidden="true">“</span><p>{item.quote}</p><div><span aria-hidden="true">{item.name.slice(-2)}</span><p><strong>{item.name}</strong><small>{item.location}</small></p></div></article>)}</div></div>;
+  return <div className={`testimonial-marquee testimonial-marquee--${direction}`}><div className="testimonial-track"><div className="testimonial-group">{items.map((item) => <TestimonialCard item={item} key={item.name} />)}</div><div className="testimonial-group" aria-hidden="true">{items.map((item) => <TestimonialCard item={item} key={`${item.name}-loop`} />)}</div></div></div>;
+}
+
+function TestimonialCard({ item }: { item: (typeof demoTestimonials)[number] }) {
+  return <article className="testimonial-demo"><span className="quote-mark" aria-hidden="true">“</span><p>{item.quote}</p><div><span aria-hidden="true">{item.name.slice(-2)}</span><p><strong>{item.name}</strong><small>{item.location}</small></p></div></article>;
 }
 
 function TestimonialsMarquee() {
