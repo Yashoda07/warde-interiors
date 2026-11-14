@@ -210,7 +210,7 @@ function TestimonialCard({ item }: { item: (typeof demoTestimonials)[number] }) 
 }
 
 function TestimonialsMarquee() {
-  return <section className="testimonial-peek testimonial-marquee-section"><p className="eyebrow">CLIENT STORIES · DEMONSTRATION PLACEHOLDERS</p><h2>Words from those we’ve served.</h2><p className="testimonial-placeholder">Temporary examples only · not verified client reviews</p><div className="testimonial-rows"><TestimonialRow items={demoTestimonials.slice(0, 4)} direction="right" /><TestimonialRow items={demoTestimonials.slice(4)} direction="left" /></div><Link to="/testimonials" className="text-link">Client stories <ArrowRight aria-hidden="true" /></Link></section>;
+  return <section className="testimonial-peek testimonial-marquee-section"><h2>Words from those we’ve served.</h2><div className="testimonial-rows"><TestimonialRow items={demoTestimonials.slice(0, 4)} direction="right" /><TestimonialRow items={demoTestimonials.slice(4)} direction="left" /></div><Link to="/testimonials" className="text-link">Client stories <ArrowRight aria-hidden="true" /></Link></section>;
 }
 
 export function PrivacyPage() {
