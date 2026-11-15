@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Menu, Sparkles, UsersRound, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Menu, Sparkles, UsersRound, X } from "lucide-react";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import wardeLogo from "@/assets/warde-transparent-logo.png.asset.json";
@@ -97,13 +97,51 @@ export function EnquiryCta({ compact = false }: { compact?: boolean }) {
 export function HomePage() {
   const [showProcessInfographic, setShowProcessInfographic] = useState(false);
   return <>
-    <section className="home-hero">
-      <img src={heroImage} alt="Temporary illustrative residential interior; Warde Interiors project photography to be added" width={1920} height={1280} fetchPriority="high" />
-      <div className="home-hero__shade" />
-      <div className="home-hero__content"><p className="eyebrow">WARDE INTERIORS · RESIDENTIAL DESIGN · THANE</p><h1>Thoughtful spaces,<br /> designed around you.</h1><p>Personalised homes where function, feeling and everyday life come together.</p><div className="hero-actions"><Button asChild><Link to="/projects">Explore projects <ArrowRight aria-hidden="true" /></Link></Button><a href={projectEnquiryUrl} target="_blank" rel="noreferrer" className="hero-text-link">Start your project <ArrowUpRight aria-hidden="true" /></a></div></div>
-      <span className="home-hero__image-note">Illustrative image · studio project photography to be added</span>
-      <a className="hero-scroll" href="#introduction"><span>DISCOVER WARDE INTERIORS</span><ArrowDown aria-hidden="true" /></a>
-    </section>
+    
+<section className="home-hero">
+  <img
+    src="https://i.postimg.cc/fb6kYmT0/hero-section-bg.png"
+    alt="Warm contemporary living room designed by Warde Interiors"
+    width={1920}
+    height={1280}
+    fetchPriority="high"
+  />
+
+  <div className="home-hero__shade" />
+
+  <div className="home-hero__content">
+    <p className="eyebrow">
+      WARDE INTERIORS · RESIDENTIAL DESIGN · THANE
+    </p>
+
+    <h1>
+      Thoughtful spaces,<br />
+      designed around you.
+    </h1>
+
+    <p>
+      Personalised homes where function, feeling and
+      everyday life come together.
+    </p>
+
+    <div className="hero-actions">
+      <Button asChild>
+        <Link to="/projects">
+          Explore projects <ArrowRight aria-hidden="true" />
+        </Link>
+      </Button>
+
+      <a
+        href={projectEnquiryUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="hero-text-link"
+      >
+        Start your project <ArrowUpRight aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>
 
     <section id="about" className="intro-section section-wrap">
       <div className="intro-copy"><p className="eyebrow">A MORE PERSONAL WAY TO DESIGN</p><h2>Design that begins<br /> with understanding.</h2><p>Samiksha Warde, founder of Warde Interiors, is passionate about creating spaces that bring together thoughtful design, functionality and timeless aesthetics. With a background in Interior Design, she approaches every project with creativity, attention to detail and a deep understanding of how spaces shape everyday living. Her design philosophy revolves around creating personalised interiors that reflect each client’s lifestyle, vision and individuality, where every element has a purpose and every space tells a story.</p><Link to="/about" className="text-link">Know more <ArrowRight aria-hidden="true" /></Link></div>
