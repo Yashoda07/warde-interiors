@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Mail, Menu, Phone, Sparkles, UsersRound, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Menu, Sparkles, UsersRound, X } from "lucide-react";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import wardeLogo from "@/assets/warde-transparent-logo.png.asset.json";
 import heroImage from "@/assets/warde-hero.jpg";
 import diningImage from "@/assets/interior-placeholder-01.jpg";
 import bedroomImage from "@/assets/interior-placeholder-02.jpg";
-import readingImage from "@/assets/interior-placeholder-03.jpg";
 import founderHomePortrait from "@/assets/warde-founder-home.png.asset.json";
 import founderAboutPortrait from "@/assets/warde-founder-about.png.asset.json";
 import project01 from "@/assets/project-01.png.asset.json";
@@ -20,21 +19,12 @@ import processInfographic from "@/assets/warde-process-infographic.png.asset.jso
 import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
 import { Button } from "@/components/ui/button";
 
-const imageFor = (image: string) => {
-  if (image === "dining") return diningImage;
-  if (image === "bedroom") return bedroomImage;
-  if (image === "reading") return readingImage;
-  return heroImage;
-};
-
 const portfolioImages = [project01.url, project02.url, project03.url, project04.url, project05.url, project06.url] as const;
 
 const navItems = [
-  ["Projects", "/projects"],
-  ["About", "/about"],
-  ["Services", "/services"],
-  ["Process", "/#design-philosophy"],
-  ["Contact", "/#site-footer"],
+  { label: "Projects", to: "/projects" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
 ] as const;
 
 export function SiteHeader() {
@@ -47,7 +37,9 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main navigation" className="desktop-nav">
           <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">Home</Link>
-          {navItems.map(([label, to]) => <Link key={to} to={to} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">{label}</Link>)}
+          {navItems.map(({ label, to }) => <Link key={to} to={to} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">{label}</Link>)}
+          <a href="/#design-philosophy" className="nav-link">Process</a>
+          <a href="/#site-footer" className="nav-link">Contact</a>
         </nav>
         <Button asChild className="header-cta"><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></Button>
         <Button variant="ghost" size="icon" className="mobile-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
@@ -56,7 +48,9 @@ export function SiteHeader() {
       </div>
       {menuOpen && <nav aria-label="Mobile navigation" className="mobile-nav">
         <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        {navItems.map(([label, to]) => <Link key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+        {navItems.map(({ label, to }) => <Link key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+        <a href="/#design-philosophy" onClick={() => setMenuOpen(false)}>Process</a>
+        <a href="/#site-footer" onClick={() => setMenuOpen(false)}>Contact</a>
         <Button asChild className="mobile-nav-cta"><a href={projectEnquiryUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Start your project <ArrowUpRight aria-hidden="true" /></a></Button>
       </nav>}
     </header>
@@ -64,7 +58,7 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
-  return <footer className="site-footer">
+  return <footer className="site-footer" id="site-footer">
     <div className="footer-top">
       <div className="footer-brand">
         <img src={wardeLogo.url} alt="Warde Interiors" width={120} height={80} loading="lazy" />
@@ -87,9 +81,8 @@ export function ProjectList({ limit }: { limit?: number }) {
     {projects.map((project, index) => <article className={`project-item project-item--${index + 1}`} key={project.slug}>
       <Link to="/projects/$slug" params={{ slug: project.slug }} className="project-image-link" aria-label={`View ${project.title}`}>
       <img src={portfolioImages[index]} alt={`${project.title} — Warde Interiors residential interior`} width={566} height={800} loading="lazy" />
-        <span className="image-note">Illustrative placeholder</span>
       </Link>
-      <div className="project-caption"><div><span className="eyebrow">ILLUSTRATIVE PLACEHOLDER</span><h3>{project.title}</h3><p>{project.location}</p></div><Link to="/projects/$slug" params={{ slug: project.slug }} className="text-link">View More <ArrowUpRight aria-hidden="true" /></Link></div>
+      <div className="project-caption"><div><span className="eyebrow">PROJECT 0{index + 1}</span><h3>{project.title}</h3><p>{project.location}</p></div><Link to="/projects/$slug" params={{ slug: project.slug }} className="text-link">View More <ArrowUpRight aria-hidden="true" /></Link></div>
     </article>)}
   </div>;
 }
@@ -119,7 +112,7 @@ export function HomePage() {
 
     <section id="projects" className="selected-section section-wrap"><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={6} /></section>
 
-    <section id="design-philosophy" className="philosophy-section"><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
+    <section id="design-philosophy" className="philosophy-section"><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
 
     <section className="services-peek section-wrap"><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
 
@@ -132,7 +125,7 @@ export function HomePage() {
 }
 
 export function ProjectsPage() {
-  return <main><PageIntro eyebrow="A GROWING BODY OF WORK" title="Projects" lead="Every home begins with a different story. Studio projects and their details will appear here as they are shared." /><section className="projects-page section-wrap"><div className="placeholder-notice"><span className="eyebrow">PORTFOLIO IMAGES TO BE REPLACED</span><p>The images below are illustrative placeholders, not completed Warde Interiors projects. Project names, locations and years will be added when supplied.</p></div><ProjectList /></section><EnquiryCta compact /></main>;
+  return <main><PageIntro eyebrow="A GROWING BODY OF WORK" title="Projects" lead="Every home begins with a different story. Explore the Warde Interiors residential portfolio." /><section className="projects-page section-wrap"><p className="portfolio-note">Project names, locations and years will be added when studio details are available.</p><ProjectList /></section><EnquiryCta compact /></main>;
 }
 
 export function ProjectDetailPage({ slug }: { slug: string }) {
@@ -142,7 +135,7 @@ export function ProjectDetailPage({ slug }: { slug: string }) {
   const next = projectPlaceholders[(projectIndex + 1 + projectPlaceholders.length) % projectPlaceholders.length];
   if (!project) return <main><PageIntro eyebrow="PROJECT STUDY" title="Project details" lead="This project could not be found." /><div className="section-wrap projects-page"><Link to="/projects" className="text-link">Return to projects <ArrowRight aria-hidden="true" /></Link></div></main>;
   const gallery = [0, 1, 2].map((offset) => portfolioImages[(projectIndex + offset) % portfolioImages.length]);
-  return <main><PageIntro eyebrow={`PROJECT STUDY · ${project.slug.slice(-3).replace("-", " ")}`} title={project.title} lead="Project information and completed-work photography will be added when supplied by the studio." /><figure className="detail-cover"><img src={image} alt="Illustrative interior placeholder; not a completed Warde Interiors project" width={1600} height={1100} /><figcaption>Illustrative image only · not a completed Warde Interiors project</figcaption></figure><section className="detail-copy section-wrap"><div><p className="eyebrow">PROJECT INFORMATION</p><h2>Project details to be added.</h2></div><div><p>Project description and completed-work photography will be added when supplied by the studio.</p><p className="eyebrow detail-placeholder">{project.location}<br />{project.year}</p></div></section><section className="detail-gallery detail-gallery--editorial section-wrap">{gallery.map((galleryImage, index) => <figure key={`${project.slug}-${index}`}><img src={galleryImage} alt={`Illustrative interior image ${index + 1}; project photography to be supplied`} loading="lazy" /><figcaption>Illustrative placeholder · project photography to be supplied</figcaption></figure>)}</section>{next && <div className="next-project section-wrap"><span className="eyebrow">NEXT PROJECT</span><Link to="/projects/$slug" params={{ slug: next.slug }}><span>{next.title}</span><ArrowRight aria-hidden="true" /></Link></div>}<EnquiryCta compact /></main>;
+  return <main><PageIntro eyebrow={`PROJECT STUDY · ${project.slug.slice(-3).replace("-", " ")}`} title={project.title} lead="A Warde Interiors residential project. Additional project details will be added when supplied by the studio." /><figure className="detail-cover"><img src={image} alt={`${project.title}, residential interior by Warde Interiors`} width={566} height={800} /><figcaption>Warde Interiors · residential interiors</figcaption></figure><section className="detail-copy section-wrap"><div><p className="eyebrow">PROJECT INFORMATION</p><h2>Project details to be added.</h2></div><div><p>Project description and further details will be added when supplied by the studio.</p><p className="eyebrow detail-placeholder">{project.location}<br />{project.year}</p></div></section><section className="detail-gallery detail-gallery--editorial section-wrap">{gallery.map((galleryImage, index) => <figure key={`${project.slug}-${index}`}><img src={galleryImage} alt={`Warde Interiors residential interior detail ${index + 1}`} loading="lazy" /><figcaption>Warde Interiors · residential interiors</figcaption></figure>)}</section>{next && <div className="next-project section-wrap"><span className="eyebrow">NEXT PROJECT</span><Link to="/projects/$slug" params={{ slug: next.slug }}><span>{next.title}</span><ArrowRight aria-hidden="true" /></Link></div>}<EnquiryCta compact /></main>;
 }
 
 export function AboutPage() {
@@ -166,7 +159,7 @@ const wardeReasons = [
 ];
 
 function WhyWardeSection() {
-  return <section className="why-section section-wrap"><figure className="why-photo"><img src={philosophyPhoto.url} alt="A considered residential interior with warm furnishings and natural light" loading="lazy" /></figure><div className="why-content"><p className="eyebrow">THE WARDE APPROACH</p><h2>Why Warde Interiors?</h2><p className="why-lead">Because thoughtful design should feel right, work beautifully and belong to the people who live with it.</p><Accordion type="single" collapsible className="why-accordion">{wardeReasons.map(({ title, summary, detail, Icon }, index) => <AccordionItem value={`reason-${index}`} key={title}><AccordionTrigger><span className="why-trigger-copy"><span className="why-number">0{index + 1}</span><strong>{title}</strong><small>{summary}</small></span><ChevronDown aria-hidden="true" /></AccordionTrigger><AccordionContent><div className="why-answer"><span className="why-icon"><Icon aria-hidden="true" /></span><p>{detail}</p></div></AccordionContent></AccordionItem>)}</Accordion></div></section>;
+  return <section className="why-section section-wrap"><figure className="why-photo"><img src={project05.url} alt="Residential bedroom with considered wall detailing and soft neutral furnishings" loading="lazy" /></figure><div className="why-content"><p className="eyebrow">THE WARDE APPROACH</p><h2>Why Warde Interiors?</h2><p className="why-lead">Because thoughtful design should feel right, work beautifully and belong to the people who live with it.</p><Accordion type="single" collapsible className="why-accordion">{wardeReasons.map(({ title, summary, detail, Icon }, index) => <AccordionItem value={`reason-${index}`} key={title}><AccordionTrigger><span className="why-trigger-copy"><span className="why-number">0{index + 1}</span><strong>{title}</strong><small>{summary}</small></span><ChevronDown aria-hidden="true" /></AccordionTrigger><AccordionContent><div className="why-answer"><span className="why-icon"><Icon aria-hidden="true" /></span><p>{detail}</p></div></AccordionContent></AccordionItem>)}</Accordion></div></section>;
 }
 
 const demoTestimonials = [
