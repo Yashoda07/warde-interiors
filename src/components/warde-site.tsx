@@ -201,14 +201,14 @@ function WhyWardeSection() {
 }
 
 const demoTestimonials = [
-  { quote: "Temporary testimonial placeholder. Replace with approved client feedback.", name: "Demo testimonial 01", location: "Client story to be supplied" },
-  { quote: "A sample layout for future client words; this is not a verified review.", name: "Demo testimonial 02", location: "Client story to be supplied" },
-  { quote: "Placeholder copy only, awaiting genuine feedback from the studio.", name: "Demo testimonial 03", location: "Client story to be supplied" },
-  { quote: "A temporary example kept clearly separate from real client endorsements.", name: "Demo testimonial 04", location: "Client story to be supplied" },
-  { quote: "Temporary testimonial placeholder. Replace with approved client feedback.", name: "Demo testimonial 05", location: "Client story to be supplied" },
-  { quote: "A sample layout for future client words; this is not a verified review.", name: "Demo testimonial 06", location: "Client story to be supplied" },
-  { quote: "Placeholder copy only, awaiting genuine feedback from the studio.", name: "Demo testimonial 07", location: "Client story to be supplied" },
-  { quote: "A temporary example kept clearly separate from real client endorsements.", name: "Demo testimonial 08", location: "Client story to be supplied" },
+  { quote: "Client feedback will appear here when supplied by the studio.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "This space is reserved for an approved client review.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "A client story will be added here after it is shared with the studio.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "Approved feedback from a Warde Interiors client will appear here.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "Client feedback will appear here when supplied by the studio.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "This space is reserved for an approved client review.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "A client story will be added here after it is shared with the studio.", name: "Client name to be added", location: "Testimonial placeholder" },
+  { quote: "Approved feedback from a Warde Interiors client will appear here.", name: "Client name to be added", location: "Testimonial placeholder" },
 ];
 
 function TestimonialColumn({ items, direction }: { items: typeof demoTestimonials; direction: "up" | "down" }) {
