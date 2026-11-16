@@ -136,24 +136,30 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .curved-process-step .process-number { display: grid; place-items: center; width: 42px; aspect-ratio: 1; border: 1px solid var(--primary); border-radius: 50%; background: var(--background); color: var(--primary); font-size: 17px; }
 .curved-process-step h3 { margin: 0 0 4px; font-family: var(--font-serif); font-size: 25px; font-weight: 500; }
 .curved-process-step p { margin: 0; color: var(--muted-foreground); font-size: 12px; line-height: 1.55; }
-.why-section { padding-block: 120px; }
-.why-section h2 { max-width: 700px; }
+.why-section { display: grid; grid-template-columns: minmax(280px, .72fr) minmax(0, 1.3fr); align-items: center; gap: clamp(36px, 6vw, 88px); padding-block: 115px; }
+.why-photo { position: relative; margin: 0; overflow: hidden; align-self: stretch; min-height: 620px; }
+.why-photo::before { position: absolute; z-index: 1; top: -20px; right: -26px; width: 150px; height: 150px; border-top: 1px solid var(--accent); border-right: 1px solid var(--accent); border-radius: 0 100% 0 0; content: ""; pointer-events: none; }
+.why-photo img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; transition: transform .5s ease; }
+.why-photo:hover img { transform: scale(1.025); }
+.why-section h2 { max-width: 700px; margin-bottom: 10px; }
+.why-lead { margin: 0; max-width: 680px; color: var(--muted-foreground); }
 .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; margin-top: 52px; }
 .value-item { border-top: 1px solid var(--border); padding-top: 20px; }
 .value-item h3 { margin: 12px 0 7px; font-size: 23px; }
 .value-item p { margin: 0; color: var(--muted-foreground); font-size: 13px; }
-.why-accordion { margin-top: 35px; border-top: 1px solid var(--border); }
+.why-accordion { margin-top: 28px; border-top: 1px solid var(--border); }
 .why-accordion [data-radix-collection-item] { text-decoration: none; }
 .why-accordion [data-radix-collection-item]:hover { text-decoration: none; }
 .why-accordion [data-state] { border-color: var(--border); }
-.why-accordion [data-radix-accordion-trigger] { min-height: 78px; padding-inline: 0; }
-.why-accordion [data-radix-accordion-trigger] > span { display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: baseline; gap: 4px 14px; text-align: left; }
-.why-accordion [data-radix-accordion-trigger] .eyebrow { grid-row: span 2; margin: 0; }
-.why-accordion [data-radix-accordion-trigger] strong { font-family: var(--font-serif); font-size: 25px; font-weight: 500; }
-.why-accordion [data-radix-accordion-trigger] small { color: var(--muted-foreground); font-size: 12px; }
+.why-accordion [data-radix-accordion-trigger] { min-height: 90px; padding: 14px 0; }
+.why-accordion [data-radix-accordion-trigger] > .why-trigger-copy { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: baseline; gap: 3px 14px; text-align: left; }
+.why-trigger-copy .why-number { grid-row: span 2; align-self: center; color: var(--primary); font-family: var(--font-serif); font-size: 27px; }
+.why-accordion [data-radix-accordion-trigger] strong { font-family: var(--font-serif); font-size: 25px; font-weight: 500; line-height: 1.15; }
+.why-accordion [data-radix-accordion-trigger] small { color: var(--muted-foreground); font-size: 12px; line-height: 1.45; }
 .why-accordion [data-radix-accordion-trigger] > svg { color: var(--primary); }
-.why-answer { display: grid; grid-template-columns: 36px minmax(0, 720px); gap: 15px; padding: 0 0 22px 56px; color: var(--muted-foreground); }
-.why-answer > svg { width: 21px; color: var(--primary); }
+.why-answer { display: grid; grid-template-columns: 50px minmax(0, 720px); gap: 16px; padding: 3px 0 24px 66px; color: var(--muted-foreground); }
+.why-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--muted); color: var(--primary); }
+.why-icon svg { width: 22px; }
 .why-answer p { margin: 0; font-size: 13px; }
 .testimonial-peek { padding: 95px 24px; text-align: center; background: var(--secondary); }
 .testimonial-peek h2 { margin: 0 0 18px; font-family: var(--font-serif); font-size: clamp(38px, 5vw, 62px); font-weight: 400; line-height: 1.05; }
