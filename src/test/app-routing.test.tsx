@@ -3,7 +3,7 @@ import { createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
-import { projectPlaceholders } from "@/lib/warde-content";
+import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
 
 // Match routes without running loaders or rendering: loaders may need a server or
 // network the test run lacks, and jsdom never loads the stylesheets React waits on.
@@ -18,5 +18,9 @@ describe("App routing", () => {
 
   it("contains exactly six project entries for the requested portfolio", () => {
     expect(projectPlaceholders).toHaveLength(6);
+  });
+
+  it("sends project enquiries to the supplied Google Form", () => {
+    expect(projectEnquiryUrl).toBe("https://forms.gle/f8t4z6BCVYeGcsz8A");
   });
 });
