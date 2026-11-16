@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Menu, Sparkles, UsersRound, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import wardeLogo from "@/assets/warde-transparent-logo.png.asset.json";
 import heroImage from "@/assets/warde-hero.jpg";
@@ -65,7 +65,7 @@ export function SiteFooter() {
         <p>Thoughtful spaces, designed around you.</p>
       </div>
       <div className="footer-links"><span className="eyebrow">EXPLORE</span><Link to="/projects">Projects</Link><Link to="/about">About</Link><Link to="/services">Services</Link><a href="/#design-philosophy">Our process</a></div>
-      <div className="footer-links"><span className="eyebrow">GET IN TOUCH</span><a href="mailto:Wardesamiksha58@gmail.com">Wardesamiksha58@gmail.com</a><a href="tel:+919324190732">+91 93241 90732</a><a href="https://www.instagram.com/warde_interiors/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /> Instagram</a><Link to="/" hash="#site-footer">Thane, Maharashtra, India</Link><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></div>
+      <div className="footer-links"><span className="eyebrow">GET IN TOUCH</span><a href="mailto:Wardesamiksha58@gmail.com">Wardesamiksha58@gmail.com</a><a href="tel:+919324190732">+91 93241 90732</a><a href="https://www.instagram.com/warde_interiors/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /> Instagram</a><span>Thane, Maharashtra, India</span><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></div>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Warde Interiors</span><Link to="/privacy">Privacy policy</Link><span>Designed with intention in Thane</span></div>
   </footer>;
@@ -96,6 +96,23 @@ export function EnquiryCta({ compact = false }: { compact?: boolean }) {
 
 export function HomePage() {
   const [showProcessInfographic, setShowProcessInfographic] = useState(false);
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>("[data-scroll-reveal]");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      sections.forEach((section) => section.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
   return <>
     
 <section className="home-hero">
@@ -143,22 +160,22 @@ export function HomePage() {
   </div>
 </section>
 
-    <section id="about" className="intro-section section-wrap">
+    <section id="about" className="intro-section section-wrap" data-scroll-reveal>
       <div className="intro-copy"><p className="eyebrow">A MORE PERSONAL WAY TO DESIGN</p><h2>Design that begins<br /> with understanding.</h2><p>Samiksha Warde, founder of Warde Interiors, is passionate about creating spaces that bring together thoughtful design, functionality and timeless aesthetics. With a background in Interior Design, she approaches every project with creativity, attention to detail and a deep understanding of how spaces shape everyday living. Her design philosophy revolves around creating personalised interiors that reflect each client’s lifestyle, vision and individuality, where every element has a purpose and every space tells a story.</p><Link to="/about" className="text-link">Know more <ArrowRight aria-hidden="true" /></Link></div>
       <figure className="intro-image founder-home-image"><img src={founderHomePortrait.url} alt="Samiksha Warde, Founder and Interior Designer at Warde Interiors" width={600} height={800} loading="lazy" /></figure>
     </section>
 
-    <section id="projects" className="selected-section section-wrap"><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={6} /></section>
+    <section id="projects" className="selected-section section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={6} /></section>
 
-    <section id="design-philosophy" className="philosophy-section"><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
+    <section id="design-philosophy" className="philosophy-section" data-scroll-reveal><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
 
-    <section className="services-peek section-wrap"><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
+    <section className="services-peek section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
 
-    <WhyWardeSection />
+    <div data-scroll-reveal><WhyWardeSection /></div>
 
-    <TestimonialsMarquee />
+    <div data-scroll-reveal><TestimonialsMarquee /></div>
 
-    <EnquiryCta />
+    <div data-scroll-reveal><EnquiryCta /></div>
   </>;
 }
 
