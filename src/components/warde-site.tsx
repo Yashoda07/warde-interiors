@@ -259,43 +259,52 @@ export function HomePage() {
   </div>
 </section>
 
-    
-<section id="about" className="intro-section section-wrap" data-scroll-reveal>
+<section className="intro-section">
   <div className="intro-copy">
-    <p className="eyebrow">A MORE PERSONAL WAY TO DESIGN</p>
+
+    <p className="eyebrow">
+      A MORE PERSONAL WAY TO DESIGN
+    </p>
 
     <h2>
-      Design that begins<br />
-      with understanding.
+      Design that begins
+      <br />
+      with <em>understanding.</em>
     </h2>
 
     <p>
-      Samiksha Warde, founder of Warde Interiors, is passionate about
-      creating spaces that bring together thoughtful design,
-      functionality and timeless aesthetics. With a background in
-      Interior Design, she approaches every project with creativity,
-      attention to detail and a deep understanding of how spaces shape
-      everyday living. Her design philosophy revolves around creating
-      personalised interiors that reflect each client’s lifestyle,
-      vision and individuality, where every element has a purpose and
-      every space tells a story.
+      Every space starts with the people who live in it.
+      Your routines, practical needs, storage and personal
+      preferences shape a home that looks beautiful and
+      works effortlessly. With a thoughtful approach and
+      a passion for design, we create interiors that feel
+      like you — timeless, functional and inspiring.
     </p>
 
-    <Link to="/about" className="text-link">
-      Know more <ArrowRight aria-hidden="true" />
-    </Link>
+    <a href="/about" className="text-link">
+      Know more
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 12h14" />
+        <path d="m13 6 6 6-6 6" />
+      </svg>
+    </a>
+
   </div>
 
-  <figure className="intro-image founder-home-image">
+  <figure className="intro-image">
     <img
-      src={founderAboutPortrait.url}
-      alt="Samiksha Warde, Founder and Interior Designer at Warde Interiors"
-      width={600}
-      height={800}
-      loading="lazy"
+      src="/YOUR-EXISTING-FOUNDER-IMAGE"
+      alt="Warde Interiors founder"
     />
   </figure>
-</section>
+  </section>
 
 
     <section id="projects" className="selected-section section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={6} /></section>
