@@ -377,91 +377,97 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 
-
 /* ==========================================
    HOMEPAGE ABOUT SECTION
-   Editorial layout — warm milk aesthetic
+   Editorial — Milk & Warm Beige Theme
 ========================================== */
 
 .intro-section {
-  width: min(1200px, calc(100% - 176px));
+  width: min(1280px, calc(100% - 120px));
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.95fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
   align-items: center;
-  gap: clamp(60px, 9vw, 120px);
+  gap: clamp(65px, 9vw, 125px);
   margin-inline: auto;
-  padding-block: 65px 75px;
+  padding-block: 115px 135px;
   background: var(--background);
 }
 
 .intro-copy {
-  min-width: 0;
-  max-width: 470px;
+  width: 100%;
+  max-width: 510px;
 }
 
 .intro-copy .eyebrow {
-  margin: 0 0 20px;
-  color: var(--primary);
-  font-size: 9px;
+  margin: 0 0 24px;
+  color: #806B57;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.19em;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .intro-copy h2 {
-  margin: 0 0 19px;
-  color: var(--foreground);
+  margin: 0 0 25px;
+  color: #38352F;
   font-family: var(--font-serif);
-  font-size: clamp(38px, 4.1vw, 48px);
+  font-size: clamp(46px, 5vw, 62px);
   font-weight: 400;
   letter-spacing: -0.025em;
-  line-height: 1.12;
+  line-height: 1.04;
 }
 
 .intro-copy > p:not(.eyebrow) {
-  max-width: 440px;
-  margin: 0 0 21px;
-  color: var(--muted-foreground);
+  max-width: 490px;
+  margin: 0 0 30px;
+  color: #62584E;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.85;
+  line-height: 1.95;
 }
+
+/* KNOW MORE — KEEP TEXT AND ARROW ON ONE LINE */
 
 .intro-copy .text-link {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
-  gap: 10px;
-  color: var(--foreground);
-  font-size: 11px;
+  justify-content: flex-start;
+  gap: 12px;
+  color: #38352F;
+  font-size: 13px;
   font-weight: 500;
-  transition: color 0.25s ease;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .intro-copy .text-link svg {
-  width: 16px;
-  height: 16px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
   transition: transform 0.25s ease;
 }
 
 .intro-copy .text-link:hover {
-  color: var(--primary);
+  color: #80634B;
 }
 
 .intro-copy .text-link:hover svg {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
-/* FOUNDER IMAGE */
+/* LARGE EDITORIAL IMAGE */
 
 .intro-section .intro-image {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 560px;
   margin: 0;
   overflow: hidden;
-  border-radius: 48% 6px 6px 48% / 50% 6px 6px 50%;
-  background: var(--secondary);
+  background: #EDE3D7;
+  border-radius: 48% 0 0 48% / 50% 0 0 50%;
 }
 
 .intro-section .intro-image img {
@@ -470,24 +476,30 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   height: 100%;
   object-fit: cover;
   object-position: center 24%;
+  border-radius: inherit;
 }
 
 /* TABLET */
 
 @media (max-width: 900px) {
   .intro-section {
-    width: calc(100% - 80px);
-    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
-    gap: 42px;
-    padding-block: 75px;
+    width: calc(100% - 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    gap: 45px;
+    padding-block: 95px 110px;
   }
 
   .intro-copy h2 {
-    font-size: clamp(34px, 4.5vw, 42px);
+    font-size: clamp(39px, 5vw, 49px);
+  }
+
+  .intro-copy > p:not(.eyebrow) {
+    font-size: 13px;
+    line-height: 1.85;
   }
 
   .intro-section .intro-image {
-    height: 380px;
+    height: 470px;
   }
 }
 
@@ -495,10 +507,10 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 @media (max-width: 680px) {
   .intro-section {
-    width: calc(100% - 40px);
+    width: calc(100% - 44px);
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding-block: 65px;
+    gap: 42px;
+    padding-block: 85px 95px;
   }
 
   .intro-copy {
@@ -506,25 +518,31 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   .intro-copy .eyebrow {
-    margin-bottom: 15px;
+    margin-bottom: 19px;
   }
 
   .intro-copy h2 {
-    font-size: clamp(37px, 10vw, 44px);
-    line-height: 1.1;
+    font-size: clamp(42px, 11vw, 52px);
+    line-height: 1.06;
+    margin-bottom: 22px;
   }
 
   .intro-copy > p:not(.eyebrow) {
     max-width: 100%;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+  }
+
+  .intro-copy .text-link {
     font-size: 13px;
-    line-height: 1.85;
   }
 
   .intro-section .intro-image {
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 5;
-    border-radius: 40% 6px 6px 6px / 20% 6px 6px 6px;
+    border-radius: 42% 0 0 0 / 22% 0 0 0;
   }
 
   .intro-section .intro-image img {
