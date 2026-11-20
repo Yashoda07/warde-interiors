@@ -1215,3 +1215,30 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
     font-size: 15px !important;
   }
 }
+
+
+/* NAVBAR — WARM MILK GLASS AFTER HERO */
+
+.site-header__inner {
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.site-header__inner--scrolled {
+  background: rgb(229 215 197 / 96%);
+  border-color: rgb(183 155 126 / 75%);
+  box-shadow: 0 6px 25px rgb(52 38 25 / 12%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.site-header__inner--scrolled .nav-link {
+  color: #49392D;
+}
+
+.site-header__inner--scrolled .nav-link:hover,
+.site-header__inner--scrolled .nav-link--active {
+  color: #956D42;
+}
