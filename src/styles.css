@@ -1094,7 +1094,13 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   .home-hero__shade {
-    background: none;
+    background: linear-gradient(
+      90deg,
+      rgb(49 32 21 / 32%) 0%,
+      rgb(60 39 25 / 22%) 40%,
+      rgb(67 45 29 / 10%) 70%,
+      transparent 100%
+    );
   }
 
   .home-hero__content {
