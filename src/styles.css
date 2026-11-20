@@ -731,11 +731,14 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
   margin-top: 30px;
 }
 
 .mobile-menu-links a {
   display: block;
+  width: 100%;
   padding: 18px 8px;
   border-bottom: 1px solid rgb(255 248 236 / 75%);
   color: #59391F;
@@ -743,13 +746,13 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   font-size: clamp(32px, 5vw, 56px);
   font-weight: 400;
   line-height: 1.15;
+  text-align: center;
   text-decoration: none;
-  transition: color .2s ease, padding-left .2s ease;
+  transition: color .2s ease;
 }
 
 .mobile-menu-links a:hover {
   color: #956D42;
-  padding-left: 15px;
 }
 
 /* Full-width enquiry button */
@@ -819,26 +822,29 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
     border-radius: 25px;
   }
 
-  .mobile-menu-top {
-    min-height: 112px;
-  }
+ .mobile-menu-top {
+  min-height: 112px;
+  justify-content: center;
+}
 
-  .mobile-menu-brand img {
-    width: 155px;
-  }
+.mobile-menu-brand img {
+  width: 155px;
+}
 
-  .mobile-menu-close {
-    width: 44px;
-    height: 44px;
-  }
+.mobile-menu-close {
+  right: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.mobile-menu-links {
+  align-items: center;
+  margin-top: 17px;
+}
 
   .mobile-menu-close svg {
     width: 31px;
     height: 31px;
-  }
-
-  .mobile-menu-links {
-    margin-top: 17px;
   }
 
   .mobile-menu-links a {
@@ -1059,13 +1065,19 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
   
   .home-hero__shade {
-    background: linear-gradient(
+      background:
+    linear-gradient(
       90deg,
-      rgb(43 29 20 / 58%) 0%,
-      rgb(48 32 22 / 43%) 35%,
-      rgb(55 38 27 / 25%) 62%,
-      rgb(55 38 27 / 7%) 85%,
+      rgb(49 32 21 / 65%) 0%,
+      rgb(60 39 25 / 50%) 28%,
+      rgb(67 45 29 / 30%) 48%,
+      rgb(67 45 29 / 12%) 70%,
       transparent 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgb(39 28 20 / 18%) 0%,
+      transparent 45%
     );
   }
 }
