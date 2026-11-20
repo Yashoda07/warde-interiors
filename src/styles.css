@@ -647,8 +647,10 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   background: rgb(248 237 220 / 88%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 5px 24px rgb(52 38 25 / 10%);
-  pointer-events: auto;
+  box-shadow:
+    0 -4px 0 #FFFFFF,
+    0 4px 0 #FFFFFF,
+    0 5px 24px rgb(52 38 25 / 10%);  pointer-events: auto;
 }
 
 .brand-mark img {
@@ -1284,12 +1286,17 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
     box-shadow 0.35s ease;
 }
 
+/* Keep the same colour; increase opacity after the hero */
 .site-header__inner--scrolled {
-  background: rgb(229 215 197 / 96%);
-  border-color: rgb(183 155 126 / 75%);
+  background: rgb(248 237 220 / 96%);
   box-shadow: 0 6px 25px rgb(52 38 25 / 12%);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+}
+
+/* Non-hero pages: higher opacity from the beginning */
+body:not(:has(.home-hero)) .site-header__inner {
+  background: rgb(248 237 220 / 96%);
 }
 
 .site-header__inner--scrolled .nav-link {
