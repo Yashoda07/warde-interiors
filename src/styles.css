@@ -1094,14 +1094,15 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   .home-hero__shade {
-    background: linear-gradient(
-      90deg,
-      rgb(49 32 21 / 32%) 0%,
-      rgb(60 39 25 / 22%) 40%,
-      rgb(67 45 29 / 10%) 70%,
-      transparent 100%
-    );
-  }
+  background: linear-gradient(
+    35deg,
+    rgb(49 32 21 / 42%) 0%,
+    rgb(60 39 25 / 30%) 25%,
+    rgb(67 45 29 / 17%) 50%,
+    rgb(67 45 29 / 6%) 75%,
+    transparent 100%
+  );
+}
 
   .home-hero__content {
     width: calc(100% - 44px);
