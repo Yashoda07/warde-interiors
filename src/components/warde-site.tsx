@@ -273,12 +273,13 @@ export function HomePage() {
     </h2>
 
     <p>
-      Every space starts with the people who live in it.
-      Your routines, practical needs, storage and personal
-      preferences shape a home that looks beautiful and
-      works effortlessly. With a thoughtful approach and
-      a passion for design, we create interiors that feel
-      like you — timeless, functional and inspiring.
+      Samiksha Warde, founder of Warde Interiors, 
+      is passionate about creating spaces that bring together thoughtful design, 
+      functionality and timeless aesthetics. 
+      With a background in Interior Design, she approaches every project with creativity, 
+      attention to detail and a deep understanding of how spaces shape everyday living. 
+      Her design philosophy revolves around creating personalised interiors that reflect each client’s lifestyle, 
+      vision and individuality, where every element has a purpose and every space tells a story.
     </p>
 
     <a href="/about" className="text-link">
