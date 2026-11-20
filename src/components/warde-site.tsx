@@ -116,10 +116,11 @@ export function HomePage() {
   return <>
     
 
+
 <section className="home-hero">
   <img
     src="https://i.postimg.cc/fb6kYmT0/hero-section-bg.png"
-    alt="Warm contemporary living room by Warde Interiors"
+    alt="Contemporary residential interior designed by Warde Interiors"
     width={1920}
     height={1280}
     fetchPriority="high"
@@ -128,26 +129,28 @@ export function HomePage() {
   <div className="home-hero__shade" />
 
   <div className="home-hero__content">
-    <p className="eyebrow">
-      WARDE INTERIORS · THOUGHTFUL RESIDENTIAL DESIGN
+
+    <p className="hero-eyebrow">
+      <span />
+      WARDE INTERIORS&nbsp; | &nbsp;THOUGHTFUL SPACES. TIMELESS DESIGN.
     </p>
 
     <h1>
       Thoughtful interiors,
       <br />
-      designed around you.
+      <em>designed around you.</em>
     </h1>
 
-    <p>
-      Creating personalised homes that bring together
-      timeless aesthetics, thoughtful functionality and
-      the way you love to live.
+    <p className="hero-description">
+      Creating beautiful, functional and personalised spaces
+      that reflect your lifestyle and inspire everyday living.
     </p>
 
     <div className="hero-actions">
+
       <Button asChild className="hero-primary-cta">
         <Link to="/projects">
-          Explore projects
+          Explore Projects
           <ArrowRight aria-hidden="true" />
         </Link>
       </Button>
@@ -156,14 +159,15 @@ export function HomePage() {
         href={projectEnquiryUrl}
         target="_blank"
         rel="noreferrer"
-        className="hero-text-link"
+        className="hero-secondary-cta"
       >
-        Start your project
-        <ArrowUpRight aria-hidden="true" />
+        Let's Discuss Your Space
       </a>
+
     </div>
   </div>
 </section>
+
     
 <section id="about" className="intro-section section-wrap" data-scroll-reveal>
   <div className="intro-copy">
