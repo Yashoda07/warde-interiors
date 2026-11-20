@@ -683,21 +683,34 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 .mobile-menu-top {
+  position: relative;
   min-height: 150px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid rgb(255 248 236 / 85%);
+}
+
+.mobile-menu-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .mobile-menu-brand img {
   display: block;
   width: clamp(170px, 24vw, 250px);
   height: auto;
+  margin: 0 auto;
   object-fit: contain;
 }
 
 .mobile-menu-close {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
