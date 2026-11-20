@@ -31,9 +31,30 @@ const navItems = [
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  
+const [isPastHero, setIsPastHero] = useState(false);
+
+useEffect(() => {
+  const updateHeader = () => {
+    const hero = document.querySelector(".home-hero");
+
+    setIsPastHero(
+      !hero || hero.getBoundingClientRect().bottom <= 90
+    );
+  };
+
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", updateHeader);
+  };
+}, []);
+
   return (
-    <header className="site-header">
-      <div className="site-header__inner">
+    <header className="site-header">      
+    <div className={`site-header__inner${isPastHero ? " site-header__inner--scrolled" : ""}`}>
+
         <Link
           to="/"
           className="brand-mark"
