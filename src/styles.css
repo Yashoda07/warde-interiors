@@ -400,69 +400,183 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 
+
 /* ==========================================
-   WARDE INTERIORS — FLOATING HERO NAVBAR
+   WARDE INTERIORS — GLOBAL FLOATING NAVBAR
+   Consistent across every website page
 ========================================== */
 
-/* Floating navbar only on homepage */
-body:has(.home-hero) .site-header {
-  position: absolute;
+.site-header {
+  position: sticky;
   top: 0;
-  left: 0;
-  z-index: 50;
+  z-index: 100;
   width: 100%;
+  padding: 12px 0;
   border: 0;
-  background: transparent;
-  backdrop-filter: none;
+  background: rgb(251 250 247 / 94%);
+  backdrop-filter: blur(12px);
 }
 
-body:has(.home-hero) .site-header__inner {
+.site-header__inner {
   width: min(1240px, calc(100% - 64px));
   max-width: none;
-  min-height: 76px;
-  margin: 22px auto 0;
-  padding: 8px 24px;
+  min-height: 70px;
+  margin: 0 auto;
+  padding: 7px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 24px;
-  border: 1px solid rgb(255 255 255 / 75%);
+  border: 1px solid #E8E0D5;
   border-radius: 999px;
   background: #FBFAF7;
-  box-shadow: 0 5px 25px rgb(56 53 47 / 8%);
+  box-shadow: 0 4px 18px rgb(56 53 47 / 6%);
 }
 
-body:has(.home-hero) .brand-mark img {
+.brand-mark img {
   width: 72px;
   height: 58px;
   object-fit: contain;
 }
 
-body:has(.home-hero) .desktop-nav {
+.desktop-nav {
+  display: flex;
+  align-items: center;
   gap: clamp(20px, 2.5vw, 38px);
 }
 
-body:has(.home-hero) .nav-link {
+.nav-link {
   color: #777067;
   font-size: 12px;
   font-weight: 500;
   transition: color .2s ease;
 }
 
-body:has(.home-hero) .nav-link:hover,
-body:has(.home-hero) .nav-link--active {
+.nav-link:hover,
+.nav-link--active {
   color: #38352F;
 }
 
-body:has(.home-hero) .header-cta {
+.header-cta {
   min-height: 42px;
-  padding-inline: 20px;
+  padding: 0 19px;
   border-radius: 8px;
   background: #665548;
   color: #FBFAF7;
   font-size: 12px;
+  transition: background .2s ease;
 }
 
-body:has(.home-hero) .header-cta:hover {
+.header-cta:hover {
   background: #806C59;
   color: #FFFFFF;
+}
+
+/* Mobile navigation */
+.mobile-menu-button,
+.mobile-nav {
+  display: none;
+}
+
+.mobile-menu-button {
+  color: #51483F;
+}
+
+.mobile-nav-cta {
+  background: #665548;
+  color: #FBFAF7;
+}
+
+/* ==========================================
+   GLOBAL TABLET NAVBAR
+========================================== */
+
+@media (max-width: 900px) and (min-width: 681px) {
+  .site-header__inner {
+    width: calc(100% - 36px);
+    padding-inline: 16px;
+    gap: 14px;
+  }
+
+  .desktop-nav {
+    gap: 15px;
+  }
+
+  .nav-link {
+    font-size: 10px;
+  }
+
+  .header-cta {
+    padding-inline: 12px;
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   GLOBAL MOBILE NAVBAR
+========================================== */
+
+@media (max-width: 680px) {
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .site-header__inner {
+    width: calc(100% - 28px);
+    min-height: 62px;
+    padding: 4px 15px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .brand-mark img {
+    width: 65px;
+    height: 54px;
+  }
+
+  .desktop-nav,
+  .site-header .header-cta {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 28px);
+    margin: 0 auto;
+    padding: 8px 19px 17px;
+    gap: 0;
+    border: 1px solid #E8E0D5;
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+    background: #FBFAF7;
+    box-shadow: 0 8px 20px rgb(56 53 47 / 7%);
+  }
+
+  .site-header:has(.mobile-nav) .site-header__inner {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .mobile-nav > a:not(.button) {
+    padding: 11px 0;
+    border-bottom: 1px solid #EAE4DA;
+    color: #51483F;
+    font-size: 13px;
+  }
+
+  .mobile-nav .mobile-nav-cta {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 14px;
+    padding: 10px 16px;
+    border-radius: 7px;
+    background: #665548;
+    color: #FBFAF7;
+  }
 }
 
 /* ==========================================
