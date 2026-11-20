@@ -27,32 +27,102 @@ const navItems = [
   { label: "Services", to: "/services" },
 ] as const;
 
+
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link to="/" className="brand-mark" aria-label="Warde Interiors home" onClick={() => setMenuOpen(false)}>
+        <Link
+          to="/"
+          className="brand-mark"
+          aria-label="Warde Interiors home"
+          onClick={() => setMenuOpen(false)}
+        >
           <img src={wardeLogo.url} alt="Warde Interiors" width={120} height={80} />
         </Link>
+
         <nav aria-label="Main navigation" className="desktop-nav">
           <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">Home</Link>
-          {navItems.map(({ label, to }) => <Link key={to} to={to} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">{label}</Link>)}
+          {navItems.map(({ label, to }) => (
+            <Link key={to} to={to} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">
+              {label}
+            </Link>
+          ))}
           <a href="/#design-philosophy" className="nav-link">Process</a>
           <a href="/#site-footer" className="nav-link">Contact</a>
         </nav>
-        <Button asChild className="header-cta"><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></Button>
-        <Button variant="ghost" size="icon" className="mobile-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
+
+        <Button asChild className="header-cta">
+          <a href={projectEnquiryUrl} target="_blank" rel="noreferrer">
+            Start your project <ArrowUpRight aria-hidden="true" />
+          </a>
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="mobile-menu-button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
           {menuOpen ? <X /> : <Menu />}
         </Button>
       </div>
-      {menuOpen && <nav aria-label="Mobile navigation" className="mobile-nav">
-        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        {navItems.map(({ label, to }) => <Link key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</Link>)}
-        <a href="/#design-philosophy" onClick={() => setMenuOpen(false)}>Process</a>
-        <a href="/#site-footer" onClick={() => setMenuOpen(false)}>Contact</a>
-        <Button asChild className="mobile-nav-cta"><a href={projectEnquiryUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Start your project <ArrowUpRight aria-hidden="true" /></a></Button>
-      </nav>}
+
+      {menuOpen && (
+        <div className="mobile-menu-overlay">
+          <button
+            className="mobile-menu-backdrop"
+            aria-label="Close navigation"
+            onClick={() => setMenuOpen(false)}
+          />
+
+          <nav className="mobile-menu-panel" aria-label="Mobile navigation">
+            <div className="mobile-menu-top">
+              <Link
+                to="/"
+                className="mobile-menu-brand"
+                onClick={() => setMenuOpen(false)}
+              >
+                <img src={wardeLogo.url} alt="Warde Interiors" />
+              </Link>
+
+              <button
+                className="mobile-menu-close"
+                aria-label="Close navigation"
+                onClick={() => setMenuOpen(false)}
+              >
+                <X />
+              </button>
+            </div>
+
+            <div className="mobile-menu-links">
+              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+              {navItems.map(({ label, to }) => (
+                <Link key={to} to={to} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </Link>
+              ))}
+              <a href="/#design-philosophy" onClick={() => setMenuOpen(false)}>Process</a>
+              <a href="/#site-footer" onClick={() => setMenuOpen(false)}>Contact</a>
+            </div>
+
+            <Button asChild className="mobile-nav-cta">
+              <a
+                href={projectEnquiryUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMenuOpen(false)}
+              >
+                Start Your Project <ArrowRight aria-hidden="true" />
+              </a>
+            </Button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
