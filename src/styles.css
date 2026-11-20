@@ -955,3 +955,215 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
     object-position: center 26%;
   }
 }
+
+
+/* ==========================================
+   WARDE INTERIORS — REFINED HERO SECTION
+========================================== */
+
+.home-hero {
+  position: relative;
+  min-height: clamp(640px, 57vw, 790px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #6B5949;
+  color: #FBFAF7;
+}
+
+.home-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Keep photograph visible while protecting text contrast */
+.home-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(35 30 25 / 48%) 0%,
+    rgb(35 30 25 / 34%) 32%,
+    rgb(35 30 25 / 13%) 65%,
+    rgb(35 30 25 / 5%) 100%
+  );
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 65%);
+  margin-left: max(8vw, calc((100vw - 1200px) / 2));
+  padding: 100px 0 90px;
+}
+
+.home-hero .eyebrow {
+  margin-bottom: 23px;
+  color: #F1E5D5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  line-height: 1.6;
+}
+
+.home-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #FFFFFF;
+  font-family: var(--font-serif);
+  font-size: clamp(58px, 6.2vw, 86px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+  text-shadow: 0 2px 16px rgb(0 0 0 / 12%);
+}
+
+.home-hero__content > p:not(.eyebrow) {
+  max-width: 470px;
+  margin: 25px 0 30px;
+  color: #F8F5F0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 18%);
+}
+
+/* CTA container */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+/* Explicit class fixes the invisible Explore Projects button */
+.hero-primary-cta {
+  display: inline-flex !important;
+  min-height: 46px;
+  padding: 0 21px !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #FBFAF7 !important;
+  border-radius: 7px !important;
+  background: #FBFAF7 !important;
+  color: #51483F !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 12%);
+  transition: background .2s ease, color .2s ease;
+}
+
+.hero-primary-cta:hover {
+  background: #E9DFD1 !important;
+  color: #38352F !important;
+}
+
+.hero-primary-cta svg {
+  width: 15px;
+  height: 15px;
+}
+
+.hero-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+
+.hero-text-link:hover {
+  color: #E8D6B9;
+}
+
+/* Tablet */
+@media (max-width: 900px) and (min-width: 681px) {
+  .home-hero {
+    min-height: 680px;
+  }
+
+  .home-hero__content {
+    width: 72%;
+    margin-left: 6vw;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(54px, 7vw, 70px);
+  }
+
+  .home-hero__shade {
+    background: linear-gradient(
+      90deg,
+      rgb(35 30 25 / 50%),
+      rgb(35 30 25 / 22%) 75%,
+      rgb(35 30 25 / 8%)
+    );
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .home-hero {
+    min-height: 740px;
+    min-height: 88svh;
+    align-items: center;
+  }
+
+  .home-hero > img {
+    object-position: 60% center;
+  }
+
+  .home-hero__shade {
+    background: linear-gradient(
+      90deg,
+      rgb(35 30 25 / 55%),
+      rgb(35 30 25 / 32%) 75%,
+      rgb(35 30 25 / 18%)
+    );
+  }
+
+  .home-hero__content {
+    width: calc(100% - 44px);
+    margin: 0 22px;
+    padding: 75px 0 55px;
+  }
+
+  .home-hero .eyebrow {
+    max-width: 300px;
+    font-size: 9px;
+    margin-bottom: 18px;
+  }
+
+  .home-hero h1 {
+    max-width: 480px;
+    font-size: clamp(45px, 11.5vw, 62px);
+    line-height: 1.03;
+  }
+
+  .home-hero__content > p:not(.eyebrow) {
+    max-width: 350px;
+    font-size: 13px;
+    line-height: 1.75;
+    margin: 21px 0 25px;
+  }
+
+  .hero-actions {
+    gap: 16px;
+  }
+
+  .hero-primary-cta {
+    min-height: 44px;
+    padding-inline: 16px !important;
+    font-size: 11px !important;
+  }
+
+  .hero-text-link {
+    font-size: 11px;
+  }
+}
