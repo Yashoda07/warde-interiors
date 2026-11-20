@@ -489,6 +489,245 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 
+/* =========================================
+   WARDE INTERIORS — ABOUT PAGE HERO
+========================================= */
+
+.warde-about-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--background);
+  padding-left: max(8.5%, calc((100vw - 1280px) / 2));
+}
+
+.warde-about-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  padding: 75px 35px 75px 0;
+}
+
+.warde-about-hero__content .eyebrow {
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.warde-about-hero__content h1 {
+  margin: 0 0 25px;
+  color: var(--foreground);
+  font-family: var(--font-serif);
+  font-size: clamp(55px, 6.2vw, 82px);
+  font-weight: 400;
+  line-height: 0.99;
+  letter-spacing: -0.035em;
+}
+
+.warde-about-hero__description {
+  max-width: 390px;
+  margin: 0 0 30px;
+  color: var(--muted-foreground);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.warde-about-hero__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 43px;
+  padding: 0 19px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition: background 0.25s ease;
+}
+
+.warde-about-hero__button:hover {
+  background: var(--foreground);
+}
+
+.warde-about-hero__button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.warde-about-hero__visual {
+  position: relative;
+  align-self: stretch;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--secondary);
+  border-radius: 48% 0 0 48% / 50% 0 0 50%;
+}
+
+.warde-about-hero__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.warde-about-hero__seal {
+  position: absolute;
+  top: 12%;
+  left: -35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  border: 1px solid rgb(102 85 72 / 45%);
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--primary);
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.warde-about-hero__seal strong {
+  font-family: var(--font-serif);
+  font-size: 39px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.warde-about-hero__seal span {
+  font-size: 6px;
+  letter-spacing: 0.13em;
+}
+
+.warde-about-hero__caption {
+  position: absolute;
+  right: 35px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 17px;
+  background: rgb(251 250 247 / 90%);
+  color: var(--foreground);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.warde-about-hero__caption span {
+  color: var(--muted-foreground);
+  font-size: 8px;
+}
+
+.warde-about-hero__decoration {
+  position: absolute;
+  z-index: 0;
+  left: 43%;
+  bottom: -100px;
+  color: rgb(214 195 160 / 13%);
+  font-family: var(--font-serif);
+  font-size: 240px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ABOUT PAGE TABLET */
+
+@media (max-width: 900px) {
+  .warde-about-hero {
+    min-height: 540px;
+    padding-left: 5%;
+  }
+
+  .warde-about-hero__content h1 {
+    font-size: clamp(46px, 6.5vw, 65px);
+  }
+
+  .warde-about-hero__visual,
+  .warde-about-hero__visual img {
+    min-height: 540px;
+  }
+
+  .warde-about-hero__seal {
+    width: 90px;
+    height: 90px;
+  }
+
+  .warde-about-hero__seal strong {
+    font-size: 32px;
+  }
+}
+
+/* ABOUT PAGE MOBILE */
+
+@media (max-width: 680px) {
+  .warde-about-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .warde-about-hero__content {
+    max-width: 100%;
+    padding: 65px 25px 45px;
+  }
+
+  .warde-about-hero__content h1 {
+    font-size: clamp(49px, 12vw, 65px);
+  }
+
+  .warde-about-hero__description {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .warde-about-hero__visual {
+    width: calc(100% - 25px);
+    min-height: 440px;
+    height: 440px;
+    margin-left: 25px;
+    border-radius: 48% 0 0 0 / 18% 0 0 0;
+  }
+
+  .warde-about-hero__visual img {
+    height: 440px;
+    min-height: 440px;
+    object-position: center 20%;
+  }
+
+  .warde-about-hero__seal {
+    top: 25px;
+    left: 25px;
+    width: 85px;
+    height: 85px;
+    transform: none;
+  }
+
+  .warde-about-hero__caption {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .warde-about-hero__decoration {
+    display: none;
+  }
+
+  .founder-profile {
+    gap: 35px;
+    padding-block: 65px;
+  }
+}
+
 /* =========================================================
    WARDE INTERIORS — SINGLE SOURCE OF TRUTH
    Global floating navbar + homepage hero
