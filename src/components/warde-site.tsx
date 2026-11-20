@@ -300,9 +300,8 @@ export function HomePage() {
 
   <figure className="intro-image">
     <img
-      src="/YOUR-EXISTING-FOUNDER-IMAGE"
-      alt="Warde Interiors founder"
-    />
+      src="https://i.postimg.cc/SxWnDb62/warde-portrait2.png"
+      alt="Warde Interiors founder" />
   </figure>
   </section>
 
