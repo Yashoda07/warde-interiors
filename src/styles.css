@@ -378,128 +378,164 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 
 /* ==========================================
-   HOMEPAGE ABOUT SECTION
-   Editorial — Milk & Warm Beige Theme
+   WARDE — HOMEPAGE ABOUT SECTION
+   Reference-based editorial layout
 ========================================== */
 
 .intro-section {
-  width: min(1280px, calc(100% - 120px));
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-  align-items: center;
-  gap: clamp(65px, 9vw, 125px);
+  width: min(1400px, calc(100% - 100px));
   margin-inline: auto;
-  padding-block: 115px 135px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(55px, 7vw, 110px);
+  padding: 145px 0 100px;
   background: var(--background);
 }
 
+/* LEFT CONTENT */
+
 .intro-copy {
   width: 100%;
-  max-width: 510px;
+  max-width: 650px;
 }
 
 .intro-copy .eyebrow {
-  margin: 0 0 24px;
-  color: #806B57;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.19em;
-  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 27px;
+  color: #563A25;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+}
+
+.intro-copy .eyebrow::before {
+  content: "";
+  width: 74px;
+  height: 1px;
+  flex-shrink: 0;
+  background: #B17A36;
 }
 
 .intro-copy h2 {
-  margin: 0 0 25px;
-  color: #38352F;
+  max-width: 720px;
+  margin: 0 0 34px;
+  color: #3D2819;
   font-family: var(--font-serif);
-  font-size: clamp(46px, 5vw, 62px);
+  font-size: clamp(52px, 5.2vw, 86px);
   font-weight: 400;
-  letter-spacing: -0.025em;
+  letter-spacing: -.035em;
   line-height: 1.04;
 }
 
-.intro-copy > p:not(.eyebrow) {
-  max-width: 490px;
-  margin: 0 0 30px;
-  color: #62584E;
-  font-family: var(--font-sans);
-  font-size: 14px;
+.intro-copy h2 em {
+  color: #A87535;
   font-weight: 400;
-  line-height: 1.95;
+  font-style: italic;
 }
 
-/* KNOW MORE — KEEP TEXT AND ARROW ON ONE LINE */
+.intro-copy > p:not(.eyebrow) {
+  max-width: 610px;
+  margin: 0 0 42px;
+  color: #493628;
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.45vw, 22px);
+  font-weight: 400;
+  line-height: 1.58;
+}
+
+/* KNOW MORE BUTTON */
 
 .intro-copy .text-link {
   display: inline-flex;
-  width: fit-content;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  color: #38352F;
-  font-size: 13px;
+  justify-content: center;
+  gap: 15px;
+  min-width: 225px;
+  min-height: 60px;
+  padding: 12px 28px;
+  border: 1.5px solid #95652F;
+  border-radius: 999px;
+  color: #59391F;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.5;
   white-space: nowrap;
-}
-
-.intro-copy .text-link svg {
-  display: block;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  transition: transform 0.25s ease;
+  transition: background .25s ease, color .25s ease;
 }
 
 .intro-copy .text-link:hover {
-  color: #80634B;
+  background: #59391F;
+  color: #FFF9EF;
+}
+
+.intro-copy .text-link svg {
+  width: 19px;
+  height: 19px;
+  transition: transform .25s ease;
 }
 
 .intro-copy .text-link:hover svg {
   transform: translateX(5px);
 }
 
-/* LARGE EDITORIAL IMAGE */
+/* RIGHT IMAGE — ARCHITECTURAL FRAME */
 
-.intro-section .intro-image {
+.intro-image {
   position: relative;
   width: 100%;
-  height: 560px;
+  height: clamp(560px, 45vw, 710px);
   margin: 0;
-  overflow: hidden;
-  background: #EDE3D7;
-  border-radius: 48% 0 0 48% / 50% 0 0 50%;
+  overflow: visible;
+  isolation: isolate;
 }
 
-.intro-section .intro-image img {
+/* Main photo */
+
+.intro-image img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 24%;
-  border-radius: inherit;
+  object-position: center 25%;
+  border-radius: 49% 49% 0 0 / 34% 34% 0 0;
+}
+
+/* Decorative golden arch */
+
+.intro-image::before {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  inset: -25px 25px 20px -22px;
+  border: 1.5px solid #C49A65;
+  border-radius: 49% 49% 0 0 / 34% 34% 0 0;
+  pointer-events: none;
 }
 
 /* TABLET */
 
 @media (max-width: 900px) {
   .intro-section {
-    width: calc(100% - 72px);
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-    gap: 45px;
-    padding-block: 95px 110px;
+    width: calc(100% - 64px);
+    grid-template-columns: 1fr .95fr;
+    gap: 38px;
+    padding-block: 125px 85px;
   }
 
   .intro-copy h2 {
-    font-size: clamp(39px, 5vw, 49px);
+    font-size: clamp(43px, 5.5vw, 58px);
   }
 
   .intro-copy > p:not(.eyebrow) {
-    font-size: 13px;
-    line-height: 1.85;
+    font-size: 17px;
   }
 
-  .intro-section .intro-image {
-    height: 470px;
+  .intro-image {
+    height: 490px;
   }
 }
 
@@ -509,8 +545,8 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   .intro-section {
     width: calc(100% - 44px);
     grid-template-columns: 1fr;
-    gap: 42px;
-    padding-block: 85px 95px;
+    gap: 48px;
+    padding-block: 105px 80px;
   }
 
   .intro-copy {
@@ -518,39 +554,47 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   .intro-copy .eyebrow {
-    margin-bottom: 19px;
+    gap: 12px;
+    font-size: 9px;
+    letter-spacing: .16em;
+  }
+
+  .intro-copy .eyebrow::before {
+    width: 38px;
   }
 
   .intro-copy h2 {
-    font-size: clamp(42px, 11vw, 52px);
+    font-size: clamp(43px, 11vw, 57px);
     line-height: 1.06;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
 
   .intro-copy > p:not(.eyebrow) {
-    max-width: 100%;
-    font-size: 14px;
-    line-height: 1.9;
-    margin-bottom: 25px;
+    font-size: 17px;
+    line-height: 1.65;
+    margin-bottom: 28px;
   }
 
   .intro-copy .text-link {
-    font-size: 13px;
+    min-width: 190px;
+    min-height: 54px;
+    font-size: 14px;
   }
 
-  .intro-section .intro-image {
-    width: 100%;
+  .intro-image {
     height: auto;
     aspect-ratio: 4 / 5;
-    border-radius: 42% 0 0 0 / 22% 0 0 0;
+    margin-right: 8px;
   }
 
-  .intro-section .intro-image img {
-    height: 100%;
+  .intro-image img {
     object-position: center 22%;
   }
-}
 
+  .intro-image::before {
+    inset: -15px 12px 12px -12px;
+  }
+}
 
 /* =========================================================
    WARDE INTERIORS — SINGLE SOURCE OF TRUTH
