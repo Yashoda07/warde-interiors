@@ -397,21 +397,22 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 ========================================== */
 
 .intro-section {
-  width: min(1400px, calc(100% - 100px));
-  margin-inline: auto;
+  width: min(1200px, calc(100% - 120px));
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
   align-items: center;
-  gap: clamp(55px, 7vw, 110px);
-  padding: 145px 0 100px;
+  gap: clamp(60px, 7vw, 100px);
+  margin-inline: auto;
+  padding-block: 155px 125px;
   background: var(--background);
+  scroll-margin-top: 125px;
 }
 
 /* LEFT CONTENT */
 
 .intro-copy {
   width: 100%;
-  max-width: 650px;
+  max-width: 520px;
 }
 
 .intro-copy .eyebrow {
@@ -434,14 +435,14 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 .intro-copy h2 {
-  max-width: 720px;
-  margin: 0 0 34px;
-  color: #3D2819;
+  max-width: 520px;
+  margin: 0 0 28px;
+  color: #38352F;
   font-family: var(--font-serif);
-  font-size: clamp(52px, 5.2vw, 86px);
+  font-size: clamp(44px, 4.6vw, 58px);
   font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1.04;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
 }
 
 .intro-copy h2 em {
@@ -451,13 +452,23 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 .intro-copy > p:not(.eyebrow) {
-  max-width: 610px;
-  margin: 0 0 42px;
-  color: #493628;
-  font-family: var(--font-serif);
-  font-size: clamp(17px, 1.45vw, 22px);
+  max-width: 500px;
+  margin: 0 0 34px;
+  color: #62584E;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.58;
+  line-height: 2;
+}
+
+.intro-section .intro-image {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  margin: 0;
+  overflow: hidden;
+  background: #EDE3D7;
+  border-radius: 48% 0 0 48% / 50% 0 0 50%;
 }
 
 /* KNOW MORE BUTTON */
@@ -534,18 +545,14 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 @media (max-width: 900px) {
   .intro-section {
-    width: calc(100% - 64px);
-    grid-template-columns: 1fr .95fr;
-    gap: 38px;
-    padding-block: 125px 85px;
+    width: calc(100% - 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    gap: 45px;
+    padding-block: 125px 100px;
   }
 
   .intro-copy h2 {
     font-size: clamp(43px, 5.5vw, 58px);
-  }
-
-  .intro-copy > p:not(.eyebrow) {
-    font-size: 17px;
   }
 
   .intro-image {
@@ -559,8 +566,8 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   .intro-section {
     width: calc(100% - 44px);
     grid-template-columns: 1fr;
-    gap: 48px;
-    padding-block: 105px 80px;
+    gap: 38px;
+    padding-block: 105px 85px;
   }
 
   .intro-copy {
@@ -627,7 +634,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   left: 0;
   z-index: 1000;
   width: 100%;
-  padding: 18px 0 0;
+  padding: 18px 0;
   background: transparent;
   border: 0;
   pointer-events: none;
@@ -648,9 +655,9 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 -4px 0 #FFFFFF,
-    0 4px 0 #FFFFFF,
-    0 5px 24px rgb(52 38 25 / 10%);  pointer-events: auto;
+    0 -2px 0 #D6AD73,
+    0 2px 0 #D6AD73,
+    0 5px 24px rgb(52 38 25 / 10%);
 }
 
 .brand-mark img {
@@ -731,7 +738,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 @media (max-width: 680px) {
   .site-header {
-    padding-top: 12px;
+    padding: 12px 0;
   }
 
   .site-header__inner {
@@ -1286,15 +1293,19 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
     box-shadow 0.35s ease;
 }
 
-/* Keep the same colour; increase opacity after the hero */
+/* Same colour, higher opacity after hero */
 .site-header__inner--scrolled {
   background: rgb(248 237 220 / 96%);
-  box-shadow: 0 6px 25px rgb(52 38 25 / 12%);
+  border-color: rgb(214 185 145 / 85%);
+  box-shadow:
+    0 -2px 0 #D6AD73,
+    0 2px 0 #D6AD73,
+    0 6px 25px rgb(52 38 25 / 12%);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
 
-/* Non-hero pages: higher opacity from the beginning */
+/* Other pages: higher opacity from the beginning */
 body:not(:has(.home-hero)) .site-header__inner {
   background: rgb(248 237 220 / 96%);
 }
