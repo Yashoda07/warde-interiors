@@ -1716,3 +1716,34 @@ body:not(:has(.home-hero)) .site-header__inner {
     will-change: auto;
   }
 }
+
+
+/* THE ATELIER – HEADING ALIGNMENT */
+
+.selected-section .section-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.selected-section .project-browse-hint {
+  align-self: auto;
+  margin: 0 0 5px auto;
+  max-width: 260px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+@media (max-width: 680px) {
+  .selected-section .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .selected-section .project-browse-hint {
+    margin: 0;
+    text-align: left;
+  }
+}
