@@ -521,20 +521,31 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 }
 
 /* Reason rows */
+/* Progressive heading stack */
 .why-reasons {
   border-top: 1px solid var(--border);
 }
 
 .why-reason {
+  position: relative;
   padding: 30px 0 32px;
   border-bottom: 1px solid var(--border);
+  view-timeline-name: --reason-scroll;
+  view-timeline-axis: block;
 }
 
 .why-reason-heading {
+  position: sticky;
+  top: calc(100px + (var(--reason-index) * 78px));
+  z-index: calc(10 + var(--reason-index));
+
   display: grid;
   grid-template-columns: 65px minmax(0, 1fr);
   align-items: center;
   gap: 20px;
+
+  background: var(--background);
+  padding-block: 12px;
 }
 
 .why-number {
@@ -553,7 +564,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   color: var(--foreground);
 }
 
-/* Descriptions */
+/* Descriptions fade individually */
 .why-description {
   margin: 14px 0 0 85px;
   max-width: 700px;
@@ -562,12 +573,11 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   line-height: 1.8;
 }
 
-/* Scroll fade */
 @supports (animation-timeline: view()) {
   .why-description {
     animation: why-description-fade linear both;
-    animation-timeline: --why-section-scroll;
-    animation-range: entry 10% exit 90%;
+    animation-timeline: --reason-scroll;
+    animation-range: exit 0% exit 100%;
   }
 }
 
@@ -577,7 +587,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   to {
-    opacity: 0.05;
+    opacity: 0;
   }
 }
 .testimonial-peek { padding: 90px max(24px, calc((100vw - 1320px) / 2)); text-align: left; background: var(--secondary); }
@@ -2376,23 +2386,23 @@ body:not(:has(.home-hero)) .site-header__inner {
   }
 
   .why-reason-heading {
-    grid-template-columns: 45px minmax(0, 1fr);
-    gap: 12px;
-  }
+  grid-template-columns: 45px minmax(0, 1fr);
+  gap: 12px;
+  top: calc(75px + (var(--reason-index) * 65px));
+}
 
-  .why-number {
-    font-size: 28px;
-  }
+.why-number {
+  font-size: 28px;
+}
 
-  .why-reason-heading h3 {
-    font-size: clamp(23px, 6vw, 30px);
-  }
+.why-reason-heading h3 {
+  font-size: clamp(23px, 6vw, 30px);
+}
 
-  .why-description {
-    margin: 12px 0 0 57px;
-    font-size: 14px;
-    line-height: 1.75;
-  }
+.why-description {
+  margin: 12px 0 0 57px;
+  font-size: 14px;
+  line-height: 1.75;
 }
 
 /* Accessibility */
