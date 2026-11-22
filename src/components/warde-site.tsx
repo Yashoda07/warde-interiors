@@ -663,12 +663,27 @@ function ServiceImageGrid({ compact = false }: { compact?: boolean }) {
 }
 
 const wardeReasons = [
-  { title: "Client-Centric Design", summary: "Every design begins with understanding the person who will use the space.", detail: "We believe the best interiors begin with listening. We take time to understand your lifestyle, daily routines, preferences and practical requirements before developing a design direction. This ensures that every decision is guided by your needs rather than a predefined design formula.", Icon: UsersRound },
-  { title: "Function Meets Aesthetics", summary: "Beautiful interiors should also work effortlessly.", detail: "Our approach balances visual appeal with everyday functionality. From efficient space planning and practical storage to furniture placement, lighting and movement, every element is considered to create spaces that are comfortable, organised and visually harmonious.", Icon: Layout },
-  { title: "Thoughtful Detailing", summary: "Materials, proportions, colours and details are considered as one cohesive design.", detail: "We pay attention to the details that bring a space together. Carefully selected materials, balanced proportions, coordinated colours, lighting and finishes contribute to an interior that feels complete, refined and timeless.", Icon: Layers3 },
-  { title: "Personalised Spaces", summary: "Each project is developed around the individual client rather than a fixed formula.", detail: "Every home has its own character, and every client has a different vision. We develop personalised design solutions that reflect individual preferences, lifestyles and requirements, creating spaces that feel genuinely personal and meaningful.", Icon: Sparkles },
+  {
+    title: "Client-Centric Design",
+    summary:
+      "Every design begins with understanding the person who will use the space. We take the time to learn about your daily habits, preferences, and future needs so the environment feels truly natural to you.",
+  },
+  {
+    title: "Function Meets Aesthetics",
+    summary:
+      "Beautiful interiors should also work effortlessly. By balancing visual appeal with smart layouts and practical storage, we ensure every room supports your everyday routines without compromise.",
+  },
+  {
+    title: "Thoughtful Detailing",
+    summary:
+      "Materials, proportions, colours and details are considered as one cohesive design. From the texture of the fabrics to the placement of lighting, every subtle element is curated to bring harmony and lasting quality to the space.",
+  },
+  {
+    title: "Personalised Spaces",
+    summary:
+      "Each project is developed around the individual client rather than a fixed formula. This bespoke approach ensures your finished interior is a one-of-a-kind reflection of your personality and lifestyle.",
+  },
 ];
-
 
 function WhyWardeSection() {
   return (
