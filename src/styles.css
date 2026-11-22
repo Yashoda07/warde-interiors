@@ -87,6 +87,133 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .project-caption h3, .process-step h3, .value-item h3 { margin: 0; font-family: var(--font-serif); font-size: 25px; font-weight: 500; line-height: 1.15; }
 .project-caption p { margin: 5px 0 0; color: var(--muted-foreground); font-size: 11px; }
 .project-caption .text-link { flex-shrink: 0; font-size: 10px; }
+
+/* CLICKABLE PROJECT CARDS */
+
+.project-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-image-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image-link img {
+  display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  transition: transform 0.65s ease;
+}
+
+.project-card-link:hover .project-image-link img {
+  transform: scale(1.035);
+}
+
+.project-image-indicator {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px;
+  background: rgb(248 237 220 / 94%);
+  color: #59391F;
+  font-size: 11px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.project-card-link:hover .project-image-indicator,
+.project-card-link:focus-visible .project-image-indicator {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-caption h3 {
+  transition: color .25s ease;
+}
+
+.project-card-link:hover .project-caption h3 {
+  color: #95652F;
+}
+
+.project-configuration {
+  font-size: 11px;
+  color: #95652F;
+  letter-spacing: .025em;
+}
+
+.project-browse-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+  color: #95652F;
+  font-size: 11px;
+  letter-spacing: .035em;
+}
+
+.project-browse-hint svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* PROJECT INFORMATION */
+
+.project-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.project-facts > div {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #DDCDBA;
+}
+
+.project-facts span {
+  color: #95652F;
+  font-size: 10px;
+  letter-spacing: .13em;
+}
+
+.project-facts p {
+  margin: 9px 0 0;
+  color: #59391F;
+  font-family: var(--font-serif);
+  font-size: 19px;
+}
+
+@media (max-width: 680px) {
+  .project-image-link img {
+    height: 360px;
+  }
+
+  .project-image-indicator {
+    opacity: 1;
+    transform: none;
+    right: 12px;
+    bottom: 12px;
+    font-size: 10px;
+  }
+
+  .project-browse-hint {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .project-facts {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 .philosophy-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 8vw; background: var(--secondary); scroll-margin-top: 78px; }
 .philosophy-copy { width: min(510px, calc(100% - 48px)); justify-self: end; padding-block: 90px; }
 .philosophy-copy > p:not(.eyebrow) { color: var(--muted-foreground); }
