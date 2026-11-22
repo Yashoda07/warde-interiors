@@ -480,12 +480,14 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   align-items: start;
   gap: clamp(45px, 6vw, 100px);
   padding-block: 120px;
+  min-height: 150vh;
   position: relative;
+
   view-timeline-name: --why-section-scroll;
   view-timeline-axis: block;
 }
 
-/* Founder portrait */
+/* Founder image */
 .why-photo {
   position: sticky;
   top: 12vh;
@@ -494,18 +496,17 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   min-height: 550px;
   max-height: 850px;
   overflow: hidden;
-  border-radius: 2px;
 }
 
 .why-photo img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: center top;
-  display: block;
 }
 
-/* Right-side content */
+/* Content */
 .why-content {
   padding-top: 8px;
 }
@@ -519,6 +520,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   line-height: 1.08;
 }
 
+/* Reason rows */
 .why-reasons {
   border-top: 1px solid var(--border);
 }
@@ -551,20 +553,21 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   color: var(--foreground);
 }
 
+/* Descriptions */
 .why-description {
-  margin: 12px 0 0 85px;
+  margin: 14px 0 0 85px;
   max-width: 700px;
   color: var(--muted-foreground);
   font-size: 15px;
   line-height: 1.8;
 }
 
-/* Scroll-driven fade */
+/* Scroll fade */
 @supports (animation-timeline: view()) {
   .why-description {
     animation: why-description-fade linear both;
     animation-timeline: --why-section-scroll;
-    animation-range: entry 0% exit 100%;
+    animation-range: entry 10% exit 90%;
   }
 }
 
@@ -574,7 +577,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   }
 
   to {
-    opacity: 0.08;
+    opacity: 0.05;
   }
 }
 .testimonial-peek { padding: 90px max(24px, calc((100vw - 1320px) / 2)); text-align: left; background: var(--secondary); }
@@ -2315,6 +2318,84 @@ body:not(:has(.home-hero)) .site-header__inner {
 }
 
 /* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .why-description {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* WHY WARDE - RESPONSIVE */
+@media (max-width: 900px) {
+  .why-section {
+    grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+    gap: 35px;
+    padding-block: 85px;
+  }
+
+  .why-photo {
+    top: 12vh;
+    height: 70vh;
+    min-height: 450px;
+  }
+
+  .why-reason-heading {
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .why-description {
+    margin-left: 64px;
+  }
+}
+
+@media (max-width: 680px) {
+  .why-section {
+    display: block;
+    padding-block: 75px;
+    min-height: 150vh;
+  }
+
+  /* Hide founder portrait on mobile */
+  .why-photo {
+    display: none;
+  }
+
+  .why-content {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .why-section h2 {
+    font-size: clamp(38px, 10vw, 52px);
+    margin-bottom: 35px;
+  }
+
+  .why-reason {
+    padding: 25px 0;
+  }
+
+  .why-reason-heading {
+    grid-template-columns: 45px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .why-number {
+    font-size: 28px;
+  }
+
+  .why-reason-heading h3 {
+    font-size: clamp(23px, 6vw, 30px);
+  }
+
+  .why-description {
+    margin: 12px 0 0 57px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+}
+
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .why-description {
     animation: none !important;
