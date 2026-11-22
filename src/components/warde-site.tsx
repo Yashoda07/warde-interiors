@@ -336,7 +336,8 @@ export function HomePage() {
   </figure>
   </section>
 
-  
+  <div className="section-gold-divider" aria-hidden="true" />
+    
   <section
     id="projects"
     className="selected-section section-wrap"
