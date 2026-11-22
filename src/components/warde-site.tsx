@@ -675,9 +675,8 @@ function WhyWardeSection() {
     <section className="why-section section-wrap">
       <figure className="why-photo">
         <img
-          src={bedroomImage}
-          alt="Residential bedroom with considered wall detailing and soft neutral furnishings"
-          loading="lazy"
+          src="https://i.postimg.cc/rFfmsb14/warde-portrait1.png"
+          alt="Samiksha Warde, founder of Warde Interiors"
         />
       </figure>
 
@@ -686,47 +685,21 @@ function WhyWardeSection() {
 
         <h2>Why Warde Interiors?</h2>
 
-        <p className="why-lead">
-          Because thoughtful design should feel right, work beautifully and
-          belong to the people who live with it.
-        </p>
+        <div className="why-reasons">
+          {wardeReasons.map(({ title, summary }, index) => (
+            <article className="why-reason" key={title}>
+              <div className="why-reason-heading">
+                <span className="why-number">
+                  0{index + 1}
+                </span>
 
-        <Accordion
-          type="single"
-          collapsible
-          className="why-accordion"
-        >
-          {wardeReasons.map(
-            ({ title, summary, detail, Icon }, index) => (
-              <AccordionItem
-                value={`reason-${index}`}
-                key={title}
-              >
-                <AccordionTrigger>
-                  <span className="why-trigger-copy">
-                    <span className="why-number">
-                      0{index + 1}
-                    </span>
-                    <strong>{title}</strong>
-                    <small>{summary}</small>
-                  </span>
+                <h3>{title}</h3>
+              </div>
 
-                  <ChevronDown aria-hidden="true" />
-                </AccordionTrigger>
-
-                <AccordionContent>
-                  <div className="why-answer">
-                    <span className="why-icon">
-                      <Icon aria-hidden="true" />
-                    </span>
-
-                    <p>{detail}</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            )
-          )}
-        </Accordion>
+              <p className="why-description">{summary}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
