@@ -340,6 +340,7 @@ export function HomePage() {
   </figure>
   </section>
 
+  
   <section
     id="projects"
     className="selected-section section-wrap"
@@ -353,19 +354,17 @@ export function HomePage() {
           A collection of homes shaped by individual lifestyles
           and thoughtful design.
         </p>
-        <span className="project-browse-hint">
-          Select a project to explore its design and details
-          <ArrowUpRight aria-hidden="true" />
-        </span>
       </div>
   
-      <Link to="/projects" className="text-link">
-        View all projects <ArrowRight aria-hidden="true" />
-      </Link>
+      <p className="project-browse-hint">
+        Select a project to explore its design and details
+        <ArrowUpRight aria-hidden="true" />
+      </p>
     </div>
   
     <ProjectList limit={5} />
-  </section>
+    </section>
+
 
     <section id="design-philosophy" className="philosophy-section" data-scroll-reveal><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
 
