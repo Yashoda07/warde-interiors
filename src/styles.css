@@ -1562,3 +1562,157 @@ body:not(:has(.home-hero)) .site-header__inner {
     font-size: 23px;
   }
 }
+
+
+/* PROJECT SECTION – EDITORIAL SCROLL EFFECT */
+
+/* Heading and top-right instruction */
+.section-heading-row {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.project-browse-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-top: 12px;
+  color: #95652F;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  text-align: right;
+  max-width: 260px;
+  flex-shrink: 0;
+}
+
+.project-browse-hint svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Five projects in one desktop row */
+@media (min-width: 901px) {
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  .project-list > .project-item {
+    grid-column: auto;
+    min-width: 0;
+    margin-top: 0;
+  }
+}
+
+/* Image container */
+.project-image-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--muted);
+}
+
+/* Image movement preparation */
+.project-image-link img {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% + 90px);
+  object-fit: cover;
+  border-radius: 7px;
+  will-change: transform;
+  transition: transform .5s ease;
+}
+
+/* Scroll-linked vertical movement */
+@supports (animation-timeline: view()) {
+  .project-image-link img {
+    animation: project-image-parallax linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% exit 100%;
+  }
+
+  @keyframes project-image-parallax {
+    from {
+      transform: translateY(40px);
+    }
+    to {
+      transform: translateY(-40px);
+    }
+  }
+
+  /* Alternate movement for a staggered editorial effect */
+  .project-item:nth-child(even) .project-image-link img {
+    animation-name: project-image-parallax-reverse;
+  }
+
+  @keyframes project-image-parallax-reverse {
+    from {
+      transform: translateY(-30px);
+    }
+    to {
+      transform: translateY(30px);
+    }
+  }
+}
+
+/* Tablet layout */
+@media (min-width: 681px) and (max-width: 900px) {
+  .project-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 20px;
+  }
+
+  .project-list > .project-item {
+    grid-column: auto;
+    margin-top: 0;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 680px) {
+  .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-browse-hint {
+    margin-top: 0;
+    text-align: left;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .project-list > .project-item {
+    grid-column: auto;
+    margin-top: 0;
+  }
+
+  .project-image-link {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .project-image-link img {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
