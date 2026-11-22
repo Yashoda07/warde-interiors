@@ -8,18 +8,11 @@ import diningImage from "@/assets/interior-placeholder-01.jpg";
 import bedroomImage from "@/assets/interior-placeholder-02.jpg";
 import founderHomePortrait from "@/assets/warde-founder-home.png.asset.json";
 import founderAboutPortrait from "@/assets/warde-founder-about.png.asset.json";
-import project01 from "@/assets/project-01.png.asset.json";
-import project02 from "@/assets/project-02.png.asset.json";
-import project03 from "@/assets/project-03.png.asset.json";
-import project04 from "@/assets/project-04.png.asset.json";
-import project05 from "@/assets/project-05.png.asset.json";
-import project06 from "@/assets/project-06.png.asset.json";
 import philosophyPhoto from "@/assets/warde-philosophy.jpg.asset.json";
 import processInfographic from "@/assets/warde-process-infographic.png.asset.json";
 import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
 import { Button } from "@/components/ui/button";
 
-const portfolioImages = [project01.url, project02.url, project03.url, project04.url, project05.url, project06.url] as const;
 
 const navItems = [
   { label: "Projects", to: "/projects" },
@@ -166,17 +159,57 @@ export function PageIntro({ eyebrow, title, lead }: { eyebrow: string; title: st
   return <section className="page-intro"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="page-intro__lead">{lead}</p></section>;
 }
 
+
 export function ProjectList({ limit }: { limit?: number }) {
   const projects = projectPlaceholders.slice(0, limit ?? projectPlaceholders.length);
-  return <div className="project-list">
-    {projects.map((project, index) => <article className={`project-item project-item--${index + 1}`} key={project.slug}>
-      <Link to="/projects/$slug" params={{ slug: project.slug }} className="project-image-link" aria-label={`View ${project.title}`}>
-      <img src={portfolioImages[index]} alt={`${project.title} — Warde Interiors residential interior`} width={566} height={800} loading="lazy" />
-      </Link>
-      <div className="project-caption"><div><span className="eyebrow">PROJECT 0{index + 1}</span><h3>{project.title}</h3><p>{project.location}</p></div><Link to="/projects/$slug" params={{ slug: project.slug }} className="text-link">View More <ArrowUpRight aria-hidden="true" /></Link></div>
-    </article>)}
-  </div>;
+
+  return (
+    <div className="project-list">
+      {projects.map((project, index) => (
+        <article
+          className={`project-item project-item--${index + 1}`}
+          key={project.slug}
+        >
+          <Link
+            to="/projects/$slug"
+            params={{ slug: project.slug }}
+            className="project-card-link"
+            aria-label={`Explore ${project.title}`}
+          >
+            <div className="project-image-link">
+              <img
+                src={project.image}
+                alt={`${project.title} — Warde Interiors`}
+                loading="lazy"
+              />
+              <span className="project-image-indicator">
+                Explore project <ArrowUpRight aria-hidden="true" />
+              </span>
+            </div>
+
+            <div className="project-caption">
+              <div>
+                <span className="eyebrow">
+                  PROJECT 0{index + 1}
+                </span>
+                <h3>{project.title}</h3>
+                <p>{project.location}</p>
+                <p className="project-configuration">
+                  {project.configuration}
+                </p>
+              </div>
+
+              <span className="text-link">
+                View Details <ArrowUpRight aria-hidden="true" />
+              </span>
+            </div>
+          </Link>
+        </article>
+      ))}
+    </div>
+  );
 }
+
 
 export function EnquiryCta({ compact = false }: { compact?: boolean }) {
   return <section className={`enquiry-cta${compact ? " enquiry-cta--compact" : ""}`}>
@@ -306,8 +339,32 @@ export function HomePage() {
   </figure>
   </section>
 
-
-    <section id="projects" className="selected-section section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">A FEW SPACES, IN TIME</p><h2>Selected projects</h2><p>A collection of homes shaped by individual lifestyles and thoughtful design.</p></div><Link to="/projects" className="text-link">View all projects <ArrowRight aria-hidden="true" /></Link></div><ProjectList limit={6} /></section>
+  <section
+    id="projects"
+    className="selected-section section-wrap"
+    data-scroll-reveal
+  >
+    <div className="section-heading-row">
+      <div>
+        <p className="eyebrow">A FEW SPACES, IN TIME</p>
+        <h2>Selected projects</h2>
+        <p>
+          A collection of homes shaped by individual lifestyles
+          and thoughtful design.
+        </p>
+        <span className="project-browse-hint">
+          Select a project to explore its design and details
+          <ArrowUpRight aria-hidden="true" />
+        </span>
+      </div>
+  
+      <Link to="/projects" className="text-link">
+        View all projects <ArrowRight aria-hidden="true" />
+      </Link>
+    </div>
+  
+    <ProjectList limit={5} />
+  </section>
 
     <section id="design-philosophy" className="philosophy-section" data-scroll-reveal><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
 
@@ -322,17 +379,131 @@ export function HomePage() {
 }
 
 export function ProjectsPage() {
-  return <main><PageIntro eyebrow="A GROWING BODY OF WORK" title="Projects" lead="Every home begins with a different story. Explore the Warde Interiors residential portfolio." /><section className="projects-page section-wrap"><p className="portfolio-note">Project names, locations and years will be added when studio details are available.</p><ProjectList /></section><EnquiryCta compact /></main>;
+  return (
+    <main>
+      <PageIntro
+        eyebrow="A GROWING BODY OF WORK"
+        title="Selected Projects"
+        lead="Discover thoughtfully designed residences, each shaped around the people who call them home."
+      />
+
+      <section className="projects-page section-wrap">
+        <ProjectList />
+      </section>
+
+      <EnquiryCta compact />
+    </main>
+  );
 }
 
 export function ProjectDetailPage({ slug }: { slug: string }) {
-  const project = projectPlaceholders.find((item) => item.slug === slug);
-  const projectIndex = projectPlaceholders.findIndex((item) => item.slug === slug);
-  const image = projectIndex >= 0 ? portfolioImages[projectIndex] : heroImage;
-  const next = projectPlaceholders[(projectIndex + 1 + projectPlaceholders.length) % projectPlaceholders.length];
-  if (!project) return <main><PageIntro eyebrow="PROJECT STUDY" title="Project details" lead="This project could not be found." /><div className="section-wrap projects-page"><Link to="/projects" className="text-link">Return to projects <ArrowRight aria-hidden="true" /></Link></div></main>;
-  const gallery = [0, 1, 2].map((offset) => portfolioImages[(projectIndex + offset) % portfolioImages.length]);
-  return <main><PageIntro eyebrow={`PROJECT STUDY · ${project.slug.slice(-3).replace("-", " ")}`} title={project.title} lead="A Warde Interiors residential project. Additional project details will be added when supplied by the studio." /><figure className="detail-cover"><img src={image} alt={`${project.title}, residential interior by Warde Interiors`} width={566} height={800} /><figcaption>Warde Interiors · residential interiors</figcaption></figure><section className="detail-copy section-wrap"><div><p className="eyebrow">PROJECT INFORMATION</p><h2>Project details to be added.</h2></div><div><p>Project description and further details will be added when supplied by the studio.</p><p className="eyebrow detail-placeholder">{project.location}<br />{project.year}</p></div></section><section className="detail-gallery detail-gallery--editorial section-wrap">{gallery.map((galleryImage, index) => <figure key={`${project.slug}-${index}`}><img src={galleryImage} alt={`Warde Interiors residential interior detail ${index + 1}`} loading="lazy" /><figcaption>Warde Interiors · residential interiors</figcaption></figure>)}</section>{next && <div className="next-project section-wrap"><span className="eyebrow">NEXT PROJECT</span><Link to="/projects/$slug" params={{ slug: next.slug }}><span>{next.title}</span><ArrowRight aria-hidden="true" /></Link></div>}<EnquiryCta compact /></main>;
+  const project = projectPlaceholders.find(
+    (item) => item.slug === slug
+  );
+
+  const projectIndex = projectPlaceholders.findIndex(
+    (item) => item.slug === slug
+  );
+
+  const next =
+    projectIndex >= 0
+      ? projectPlaceholders[
+          (projectIndex + 1) % projectPlaceholders.length
+        ]
+      : null;
+
+  if (!project) {
+    return (
+      <main>
+        <PageIntro
+          eyebrow="PROJECT STUDY"
+          title="Project not found"
+          lead="The requested project could not be found."
+        />
+        <div className="section-wrap projects-page">
+          <Link to="/projects" className="text-link">
+            Return to projects <ArrowRight />
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="project-detail-page">
+      <PageIntro
+        eyebrow={`PROJECT 0${projectIndex + 1} · WARDE INTERIORS`}
+        title={project.title}
+        lead={project.description}
+      />
+
+      <figure className="detail-cover">
+        <img
+          src={project.image}
+          alt={`${project.title} — Residential interiors by Warde Interiors`}
+        />
+        <figcaption>
+          {project.title} · Warde Interiors
+        </figcaption>
+      </figure>
+
+      <section className="detail-copy section-wrap">
+        <div>
+          <p className="eyebrow">THE PROJECT</p>
+          <h2>{project.title}</h2>
+        </div>
+
+        <div className="project-facts">
+          <div>
+            <span>LOCATION</span>
+            <p>{project.location}</p>
+          </div>
+
+          <div>
+            <span>PROJECT TYPE</span>
+            <p>{project.configuration}</p>
+          </div>
+
+          <div>
+            <span>DESIGN STUDIO</span>
+            <p>Warde Interiors</p>
+          </div>
+        </div>
+      </section>
+
+      {project.gallery.length > 0 && (
+        <section className="detail-gallery detail-gallery--editorial section-wrap">
+          {project.gallery.map((galleryImage, index) => (
+            <figure key={`${project.slug}-${index}`}>
+              <img
+                src={galleryImage}
+                alt={`${project.title} — Interior detail ${index + 1}`}
+                loading="lazy"
+              />
+              <figcaption>
+                {project.title} · Interior detail
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      )}
+
+      {next && (
+        <div className="next-project section-wrap">
+          <span className="eyebrow">NEXT PROJECT</span>
+          <Link
+            to="/projects/$slug"
+            params={{ slug: next.slug }}
+          >
+            <span>{next.title}</span>
+            <ArrowRight aria-hidden="true" />
+          </Link>
+        </div>
+      )}
+
+      <EnquiryCta compact />
+    </main>
+  );
 }
 
 export function AboutPage() {
