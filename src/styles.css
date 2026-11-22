@@ -1749,7 +1749,7 @@ body:not(:has(.home-hero)) .site-header__inner {
 }
 
 .section-gold-divider {
-  width: 72px;
+  width: 120px;
   height: 1px;
   margin: 0 auto;
   background: linear-gradient(
