@@ -1,18 +1,63 @@
+
 export const projectEnquiryUrl = "https://forms.gle/f8t4z6BCVYeGcsz8A";
 
 export const projectPlaceholders = [
-  { slug: "residence-study-one", image: "portfolio-01", title: "Project 01 · Details to be added", location: "Location to be added", year: "Year to be added" },
-  { slug: "residence-study-two", image: "portfolio-02", title: "Project 02 · Details to be added", location: "Location to be added", year: "Year to be added" },
-  { slug: "residence-study-three", image: "portfolio-03", title: "Project 03 · Details to be added", location: "Location to be added", year: "Year to be added" },
-  { slug: "residence-study-four", image: "portfolio-04", title: "Project 04 · Details to be added", location: "Location to be added", year: "Year to be added" },
-  { slug: "residence-study-five", image: "portfolio-05", title: "Project 05 · Details to be added", location: "Location to be added", year: "Year to be added" },
-  { slug: "residence-study-six", image: "portfolio-06", title: "Project 06 · Details to be added", location: "Location to be added", year: "Year to be added" },
+  {
+    slug: "the-melange-house",
+    image: "https://i.postimg.cc/90wpSn7y/hero-img2.png",
+    title: "The Mélange House",
+    location: "Piramal Araynya Towers, Reay Road",
+    configuration: "2BHK Residence",
+    year: "",
+    description: "A thoughtfully designed 2BHK residence at Piramal Araynya Towers, Reay Road.",
+    gallery: [],
+  },
+  {
+    slug: "the-olive-and-ember-house",
+    image: "https://i.postimg.cc/25wrbH31/hero-img-3.png",
+    title: "The Olive & Ember House",
+    location: "Lodha Upper Thane",
+    configuration: "3BHK Residential Project",
+    year: "",
+    description: "A thoughtfully designed 3BHK residential project at Lodha Upper Thane.",
+    gallery: [],
+  },
+  {
+    slug: "the-compact-canvas",
+    image: "https://i.postimg.cc/yxKmQ87K/hero-img-2.png",
+    title: "The Compact Canvas",
+    location: "Lodha Crown, Thane",
+    configuration: "2BHK Residential Project",
+    year: "",
+    description: "A thoughtfully designed 2BHK residential project at Lodha Crown, Thane.",
+    gallery: [],
+  },
+  {
+    slug: "elara",
+    image: "https://i.postimg.cc/gcMyqd17/hero-img-4.png",
+    title: "Elara",
+    location: "Raymond Realty",
+    configuration: "2BHK Residential Project",
+    year: "",
+    description: "A thoughtfully designed 2BHK residential project at Raymond Realty.",
+    gallery: [],
+  },
+  {
+    slug: "the-avira",
+    image: "https://i.postimg.cc/VLdqKp8Y/hero-img-5.png",
+    title: "The Avira",
+    location: "Raymond Realty, Thane",
+    configuration: "2BHK Residential Project",
+    year: "",
+    description: "A thoughtfully designed 2BHK residential project at Raymond Realty, Thane.",
+    gallery: [],
+  },
 ] as const;
 
 export function projectMetadataTitle(slug: string) {
-  const projectIndex = projectPlaceholders.findIndex((project) => project.slug === slug);
-  const projectNumber = projectIndex >= 0 ? String(projectIndex + 1).padStart(2, "0") : "";
-  return projectNumber
-    ? `Project ${projectNumber} | Warde Interiors, Thane`
+  const project = projectPlaceholders.find((item) => item.slug === slug);
+
+  return project
+    ? `${project.title} | Warde Interiors`
     : "Project details | Warde Interiors, Thane";
 }
