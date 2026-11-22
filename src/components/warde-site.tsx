@@ -702,7 +702,11 @@ function WhyWardeSection() {
 
         <div className="why-reasons">
           {wardeReasons.map(({ title, summary }, index) => (
-            <article className="why-reason" key={title}>
+            <article
+                className="why-reason"
+                key={title}
+                style={{ "--reason-index": index } as React.CSSProperties}
+              >
               <div className="why-reason-heading">
                 <span className="why-number">
                   0{index + 1}
