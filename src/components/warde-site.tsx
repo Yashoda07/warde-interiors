@@ -199,10 +199,6 @@ export function ProjectList({ limit }: { limit?: number }) {
                   {project.configuration}
                 </p>
               </div>
-
-              <span className="text-link">
-                View Details <ArrowUpRight aria-hidden="true" />
-              </span>
             </div>
           </Link>
         </article>
@@ -349,7 +345,7 @@ export function HomePage() {
     <div className="section-heading-row">
       <div>
         <p className="eyebrow">A FEW SPACES, IN TIME</p>
-        <h2>Selected projects</h2>
+        <h2>The Atelier</h2>
         <p>
           A collection of homes shaped by individual lifestyles
           and thoughtful design.
