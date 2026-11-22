@@ -1747,3 +1747,15 @@ body:not(:has(.home-hero)) .site-header__inner {
     text-align: left;
   }
 }
+
+.section-gold-divider {
+  width: 72px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(164 126 72 / 45%) 50%,
+    transparent 100%
+  );
+}
