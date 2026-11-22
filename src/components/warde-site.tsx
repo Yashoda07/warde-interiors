@@ -1,5 +1,21 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, ChevronDown, Instagram, Layers3, Layout, Menu, Sparkles, UsersRound, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
+  Instagram,
+  Layers3,
+  Layout,
+  Menu,
+  Sparkles,
+  UsersRound,
+  X,
+  MessagesSquare,
+  Lightbulb,
+  DraftingCompass,
+  HardHat,
+  House
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import wardeLogo from "@/assets/warde-transparent-logo.png.asset.json";
@@ -10,7 +26,6 @@ import founderHomePortrait from "@/assets/warde-founder-home.png.asset.json";
 import founderAboutPortrait from "@/assets/warde-founder-about.png.asset.json";
 import project05 from "@/assets/project-05.png.asset.json";
 import philosophyPhoto from "@/assets/warde-philosophy.jpg.asset.json";
-import processInfographic from "@/assets/warde-process-infographic.png.asset.json";
 import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
 import { Button } from "@/components/ui/button";
 
@@ -216,7 +231,6 @@ export function EnquiryCta({ compact = false }: { compact?: boolean }) {
 }
 
 export function HomePage() {
-  const [showProcessInfographic, setShowProcessInfographic] = useState(false);
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>("[data-scroll-reveal]");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -363,7 +377,139 @@ export function HomePage() {
     </section>
 
 
-    <section id="design-philosophy" className="philosophy-section" data-scroll-reveal><div className="philosophy-copy"><p className="eyebrow">OUR DESIGN PHILOSOPHY</p><h2>Function first.<br /> Design that naturally follows.</h2><p>How a space works is where its beauty begins. We consider movement, comfort, storage, materials and detail together—before a design takes its final form.</p><Button className="philosophy-toggle" aria-pressed={showProcessInfographic} onClick={() => setShowProcessInfographic((show) => !show)}>{showProcessInfographic ? "Back to design philosophy" : "Explore our process"} <ArrowRight aria-hidden="true" /></Button></div><figure className="philosophy-image"><img key={showProcessInfographic ? "process" : "philosophy"} className={showProcessInfographic ? "philosophy-image--contain" : ""} src={showProcessInfographic ? processInfographic.url : philosophyPhoto.url} alt={showProcessInfographic ? "Five design stages: Understand, Conceptualise, Design, Execute and Handover" : "A residential interior with a warm palette and considered furniture"} width={showProcessInfographic ? 1536 : 433} height={showProcessInfographic ? 1024 : 800} loading="lazy" /></figure></section>
+
+    <section
+      id="design-philosophy"
+      className="philosophy-section"
+      data-scroll-reveal
+    >
+      {/* DESIGN PHILOSOPHY */}
+      <div className="philosophy-main">
+    
+        <div className="philosophy-copy">
+    
+          <div className="philosophy-eyebrow">
+            <p className="eyebrow">OUR DESIGN PHILOSOPHY</p>
+            <span />
+          </div>
+    
+          <h2>
+            Function first.
+            <br />
+            Design that naturally
+            <br />
+            <em>follows.</em>
+          </h2>
+    
+          <p>
+            Creating functional and aesthetically balanced spaces.
+            Emphasis on timeless design, thoughtful detailing and
+            material selection. Developing personalised interiors
+            that align with each client's lifestyle and requirements.
+          </p>
+    
+          <a href="#our-process" className="philosophy-cta">
+            Explore our process
+            <ArrowRight aria-hidden="true" />
+          </a>
+    
+        </div>
+    
+        <figure className="philosophy-image">
+          <img
+            src={philosophyPhoto.url}
+            alt="A thoughtfully designed residential interior with warm natural tones"
+            width={433}
+            height={800}
+            loading="lazy"
+          />
+        </figure>
+    
+      </div>
+    
+      {/* OUR PROCESS */}
+      <div id="our-process" className="process-section">
+    
+        <div className="process-heading">
+          <span />
+          <p>OUR PROCESS</p>
+          <span />
+        </div>
+    
+        <div className="process-grid">
+    
+          <div className="process-card">
+            <div className="process-icon-wrap">
+              <span className="process-number">01</span>
+              <div className="process-icon">
+                <MessagesSquare />
+              </div>
+            </div>
+            <h3>Understand</h3>
+            <p>
+              Understand the client's lifestyle, requirements
+              and vision.
+            </p>
+          </div>
+    
+          <div className="process-card">
+            <div className="process-icon-wrap">
+              <span className="process-number">02</span>
+              <div className="process-icon">
+                <Lightbulb />
+              </div>
+            </div>
+            <h3>Conceptualise</h3>
+            <p>
+              Develop the design direction around the space
+              and client needs.
+            </p>
+          </div>
+    
+          <div className="process-card">
+            <div className="process-icon-wrap">
+              <span className="process-number">03</span>
+              <div className="process-icon">
+                <DraftingCompass />
+              </div>
+            </div>
+            <h3>Design</h3>
+            <p>
+              Translate the concept into detailed design
+              and visualisation.
+            </p>
+          </div>
+    
+          <div className="process-card">
+            <div className="process-icon-wrap">
+              <span className="process-number">04</span>
+              <div className="process-icon">
+                <HardHat />
+              </div>
+            </div>
+            <h3>Execute</h3>
+            <p>
+              Coordinate the design through implementation.
+            </p>
+          </div>
+    
+          <div className="process-card">
+            <div className="process-icon-wrap">
+              <span className="process-number">05</span>
+              <div className="process-icon">
+                <House />
+              </div>
+            </div>
+            <h3>Handover</h3>
+            <p>
+              Deliver a finished space designed around the client.
+            </p>
+          </div>
+    
+        </div>
+      </div>
+    
+    </section>
 
     <section className="services-peek section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
 
