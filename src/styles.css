@@ -2133,3 +2133,36 @@ body:not(:has(.home-hero)) .site-header__inner {
     font-size: 14px;
   }
 }
+
+
+/* FIX: PHILOSOPHY IMAGE DESKTOP SIZE */
+
+@media (min-width: 901px) {
+  .philosophy-main {
+    height: 550px;
+    min-height: 550px;
+    grid-template-columns: 1fr 1.08fr;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .philosophy-image {
+    height: 550px;
+    min-height: 0;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .philosophy-image img {
+    display: block;
+    width: 100%;
+    height: 550px !important;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .philosophy-copy {
+    padding-block: 40px;
+  }
+}
