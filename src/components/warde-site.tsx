@@ -527,9 +527,69 @@ const wardeReasons = [
   { title: "Personalised Spaces", summary: "Each project is developed around the individual client rather than a fixed formula.", detail: "Every home has its own character, and every client has a different vision. We develop personalised design solutions that reflect individual preferences, lifestyles and requirements, creating spaces that feel genuinely personal and meaningful.", Icon: Sparkles },
 ];
 
+
 function WhyWardeSection() {
-  return <section className="why-section section-wrap"><figure className="why-photo"><img src={project05.url} alt="Residential bedroom with considered wall detailing and soft neutral furnishings" loading="lazy" /></figure><div className="why-content"><p className="eyebrow">THE WARDE APPROACH</p><h2>Why Warde Interiors?</h2><p className="why-lead">Because thoughtful design should feel right, work beautifully and belong to the people who live with it.</p><Accordion type="single" collapsible className="why-accordion">{wardeReasons.map(({ title, summary, detail, Icon }, index) => <AccordionItem value={`reason-${index}`} key={title}><AccordionTrigger><span className="why-trigger-copy"><span className="why-number">0{index + 1}</span><strong>{title}</strong><small>{summary}</small></span><ChevronDown aria-hidden="true" /></AccordionTrigger><AccordionContent><div className="why-answer"><span className="why-icon"><Icon aria-hidden="true" /></span><p>{detail}</p></div></AccordionContent></AccordionItem>)}</Accordion></div></section>;
+  return (
+    <section className="why-section section-wrap">
+      <figure className="why-photo">
+        <img
+          src={bedroomImage}
+          alt="Residential bedroom with considered wall detailing and soft neutral furnishings"
+          loading="lazy"
+        />
+      </figure>
+
+      <div className="why-content">
+        <p className="eyebrow">THE WARDE APPROACH</p>
+
+        <h2>Why Warde Interiors?</h2>
+
+        <p className="why-lead">
+          Because thoughtful design should feel right, work beautifully and
+          belong to the people who live with it.
+        </p>
+
+        <Accordion
+          type="single"
+          collapsible
+          className="why-accordion"
+        >
+          {wardeReasons.map(
+            ({ title, summary, detail, Icon }, index) => (
+              <AccordionItem
+                value={`reason-${index}`}
+                key={title}
+              >
+                <AccordionTrigger>
+                  <span className="why-trigger-copy">
+                    <span className="why-number">
+                      0{index + 1}
+                    </span>
+                    <strong>{title}</strong>
+                    <small>{summary}</small>
+                  </span>
+
+                  <ChevronDown aria-hidden="true" />
+                </AccordionTrigger>
+
+                <AccordionContent>
+                  <div className="why-answer">
+                    <span className="why-icon">
+                      <Icon aria-hidden="true" />
+                    </span>
+
+                    <p>{detail}</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            )
+          )}
+        </Accordion>
+      </div>
+    </section>
+  );
 }
+
 
 const demoTestimonials = [
   { quote: "Client feedback will appear here when supplied by the studio.", name: "Client name to be added", location: "Testimonial placeholder" },
