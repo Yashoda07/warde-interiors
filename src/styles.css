@@ -1445,3 +1445,120 @@ body:not(:has(.home-hero)) .site-header__inner {
 .site-header__inner--scrolled .nav-link--active {
   color: #956D42;
 }
+
+
+/* SELECTED PROJECTS – REFINED LAYOUT */
+
+/* Desktop: all five projects in one row */
+@media (min-width: 901px) {
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  .project-list > .project-item {
+    min-width: 0;
+    grid-column: auto;
+    margin-top: 0;
+  }
+}
+
+/* Project images */
+.project-image-link {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.project-image-link img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform .5s ease;
+}
+
+/* Project information – keep everything visible */
+.project-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding-top: 15px;
+}
+
+.project-caption > div {
+  width: 100%;
+  min-width: 0;
+}
+
+.project-caption .eyebrow {
+  font-size: 9px;
+  margin-bottom: 7px;
+}
+
+.project-caption h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 500;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+.project-caption p {
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 6px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.project-caption .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Tablet */
+@media (min-width: 681px) and (max-width: 900px) {
+  .project-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+  }
+
+  .project-list > .project-item {
+    grid-column: auto;
+    margin-top: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .project-list {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .project-list > .project-item {
+    grid-column: auto;
+    margin-top: 0;
+  }
+
+  .project-caption {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-caption h3 {
+    font-size: 23px;
+  }
+}
