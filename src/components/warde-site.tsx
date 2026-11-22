@@ -8,6 +8,7 @@ import diningImage from "@/assets/interior-placeholder-01.jpg";
 import bedroomImage from "@/assets/interior-placeholder-02.jpg";
 import founderHomePortrait from "@/assets/warde-founder-home.png.asset.json";
 import founderAboutPortrait from "@/assets/warde-founder-about.png.asset.json";
+import project05 from "@/assets/project-05.png.asset.json";
 import philosophyPhoto from "@/assets/warde-philosophy.jpg.asset.json";
 import processInfographic from "@/assets/warde-process-infographic.png.asset.json";
 import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
