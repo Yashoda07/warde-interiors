@@ -691,7 +691,7 @@ function WhyWardeSection() {
       <figure className="why-photo">
         <img
           src="https://i.postimg.cc/rFfmsb14/warde-portrait1.png"
-          alt="Samiksha Warde, founder of Warde Interiors"
+          alt="Founder of Warde Interiors"
         />
       </figure>
 
