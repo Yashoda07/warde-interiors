@@ -9,7 +9,7 @@ export const projectPlaceholders = [
     location: "Piramal Araynya Towers, Reay Road",
     configuration: "2BHK Residence",
     description: "A thoughtfully designed 2BHK residence at Piramal Araynya Towers, Reay Road.",
-    gallery: [],
+    gallery: [] as string[],,
   },
   {
     slug: "the-olive-and-ember-house",
@@ -18,7 +18,7 @@ export const projectPlaceholders = [
     location: "Lodha Upper Thane",
     configuration: "3BHK Residential Project",
     description: "A thoughtfully designed 3BHK residential project at Lodha Upper Thane.",
-    gallery: [],
+    gallery: [] as string[],,
   },
   {
     slug: "the-compact-canvas",
@@ -27,7 +27,7 @@ export const projectPlaceholders = [
     location: "Lodha Crown, Thane",
     configuration: "2BHK Residential Project",
     description: "A thoughtfully designed 2BHK residential project at Lodha Crown, Thane.",
-    gallery: [],
+    gallery: [] as string[],,
   },
   {
     slug: "elara",
@@ -36,7 +36,7 @@ export const projectPlaceholders = [
     location: "Raymond Realty",
     configuration: "2BHK Residential Project",
     description: "A thoughtfully designed 2BHK residential project at Raymond Realty.",
-    gallery: [],
+    gallery: [] as string[],,
   },
   {
     slug: "the-avira",
@@ -45,7 +45,7 @@ export const projectPlaceholders = [
     location: "Raymond Realty, Thane",
     configuration: "2BHK Residential Project",
     description: "A thoughtfully designed 2BHK residential project at Raymond Realty, Thane.",
-    gallery: [],
+    gallery: [] as string[],,
   },
 ] as const;
 
