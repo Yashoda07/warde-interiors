@@ -638,24 +638,6 @@ export function HomePage() {
   </>;
 }
 
-export function ProjectsPage() {
-  return (
-    <main>
-      <PageIntro
-        eyebrow="A GROWING BODY OF WORK"
-        title="Selected Projects"
-        lead="Discover thoughtfully designed residences, each shaped around the people who call them home."
-      />
-
-      <section className="projects-page section-wrap">
-        <ProjectList />
-      </section>
-
-      <EnquiryCta compact />
-    </main>
-  );
-}
-
 export function ProjectDetailPage({ slug }: { slug: string }) {
   const project = projectPlaceholders.find(
     (item) => item.slug === slug
