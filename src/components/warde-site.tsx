@@ -625,7 +625,7 @@ export function HomePage() {
         <ServiceImageGrid compact />
       </section>
 
-    <div data-scroll-reveal><WhyWardeSection /></div>
+    <WhyWardeSection />
 
     <div data-scroll-reveal><TestimonialsMarquee /></div>
 
@@ -799,11 +799,7 @@ function WhyWardeSection() {
 
         <div className="why-reasons">
           {wardeReasons.map(({ title, summary }, index) => (
-            <article
-                className="why-reason"
-                key={title}
-                style={{ "--reason-index": index } as React.CSSProperties}
-              >
+            <article className="why-reason" key={title}>
               <div className="why-reason-heading">
                 <span className="why-number">
                   0{index + 1}
