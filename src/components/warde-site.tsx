@@ -368,14 +368,13 @@ export function HomePage() {
       </div>
   
       <p className="project-browse-hint">
-        Select a project to explore its design and details
+        Select a project to explore its details
         <ArrowUpRight aria-hidden="true" />
       </p>
     </div>
   
     <ProjectList limit={5} />
     </section>
-
 
 
     <section
