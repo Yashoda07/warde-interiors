@@ -26,34 +26,67 @@ import founderHomePortrait from "@/assets/warde-founder-home.png.asset.json";
 import founderAboutPortrait from "@/assets/warde-founder-about.png.asset.json";
 import project05 from "@/assets/project-05.png.asset.json";
 import philosophyPhoto from "@/assets/warde-philosophy.jpg.asset.json";
-import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
+import {
+  projectEnquiryEmbedUrl,
+  projectPlaceholders,
+} from "@/lib/warde-content";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+
+
+export function openProjectEnquiry() {
+  window.dispatchEvent(new Event("open-project-enquiry"));
+}
 
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [projectFormOpen, setProjectFormOpen] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
 
-  
-const [isPastHero, setIsPastHero] = useState(false);
+  // Header scroll behaviour
+  useEffect(() => {
+    const updateHeader = () => {
+      const hero = document.querySelector(".home-hero");
 
-useEffect(() => {
-  const updateHeader = () => {
-    const hero = document.querySelector(".home-hero");
+      setIsPastHero(
+        !hero || hero.getBoundingClientRect().bottom <= 90
+      );
+    };
 
-    setIsPastHero(
-      !hero || hero.getBoundingClientRect().bottom <= 90
-    );
-  };
+    updateHeader();
 
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener("resize", updateHeader);
 
-  return () => {
-    window.removeEventListener("scroll", updateHeader);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", updateHeader);
+      window.removeEventListener("resize", updateHeader);
+    };
+  }, []);
+
+  // Google Form popup behaviour
+  useEffect(() => {
+    const handleOpenForm = () => {
+      setProjectFormOpen(true);
+    };
+
+    window.addEventListener("open-project-enquiry", handleOpenForm);
+
+    return () => {
+      window.removeEventListener("open-project-enquiry", handleOpenForm);
+    };
+  }, []);
+
+  // Keep your existing return statement below
 
   return (
+    <>
     <header className="site-header">      
     <div className={`site-header__inner${isPastHero ? " site-header__inner--scrolled" : ""}`}>
 
@@ -179,6 +212,26 @@ useEffect(() => {
         </div>
       )}
     </header>
+  <Dialog
+      open={projectFormOpen}
+      onOpenChange={setProjectFormOpen}
+    >
+      <DialogContent className="project-form-dialog">
+        <DialogHeader>
+          <DialogTitle>
+            Start Your Project
+          </DialogTitle>
+        </DialogHeader>
+
+        <iframe
+          src={projectEnquiryEmbedUrl}
+          title="Warde Interiors Project Enquiry Form"
+          className="project-form-iframe"
+          loading="lazy"
+        />
+      </DialogContent>
+    </Dialog>
+  </>
   );
 }
 
