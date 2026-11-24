@@ -30,13 +30,6 @@ import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
 import { Button } from "@/components/ui/button";
 
 
-const navItems = [
-  { label: "Projects", to: "/projects" },
-  { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
-] as const;
-
-
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -73,16 +66,32 @@ useEffect(() => {
           <img src={wardeLogo.url} alt="Warde Interiors" width={120} height={80} />
         </Link>
 
+       
         <nav aria-label="Main navigation" className="desktop-nav">
-          <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">Home</Link>
-          {navItems.map(({ label, to }) => (
-            <Link key={to} to={to} activeProps={{ className: "nav-link nav-link--active" }} className="nav-link">
-              {label}
-            </Link>
-          ))}
-          <a href="/#design-philosophy" className="nav-link">Process</a>
-          <a href="/#site-footer" className="nav-link">Contact</a>
+          <Link
+            to="/"
+            className="nav-link"
+            activeOptions={{ exact: true }}
+            activeProps={{ className: "nav-link nav-link--active" }}
+          >
+            Home
+          </Link>
+        
+          <a href="/#projects" className="nav-link">Projects</a>
+        
+          <Link
+            to="/about"
+            className="nav-link"
+            activeProps={{ className: "nav-link nav-link--active" }}
+          >
+            About
+          </Link>
+        
+          <a href="/#services" className="nav-link">Services</a>
+          <a href="/#our-process" className="nav-link">Process</a>
+          <a href="/#contact" className="nav-link">Contact</a>
         </nav>
+
 
         <Button asChild className="header-cta">
           <a href={projectEnquiryUrl} target="_blank" rel="noreferrer">
@@ -129,15 +138,31 @@ useEffect(() => {
               </button>
             </div>
 
+            
             <div className="mobile-menu-links">
-              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-              {navItems.map(({ label, to }) => (
-                <Link key={to} to={to} onClick={() => setMenuOpen(false)}>
-                  {label}
-                </Link>
-              ))}
-              <a href="/#design-philosophy" onClick={() => setMenuOpen(false)}>Process</a>
-              <a href="/#site-footer" onClick={() => setMenuOpen(false)}>Contact</a>
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
+            
+              <a href="/#projects" onClick={() => setMenuOpen(false)}>
+                Projects
+              </a>
+            
+              <Link to="/about" onClick={() => setMenuOpen(false)}>
+                About
+              </Link>
+            
+              <a href="/#services" onClick={() => setMenuOpen(false)}>
+                Services
+              </a>
+            
+              <a href="/#our-process" onClick={() => setMenuOpen(false)}>
+                Process
+              </a>
+            
+              <a href="/#contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </a>
             </div>
 
             <Button asChild className="mobile-nav-cta">
@@ -158,7 +183,7 @@ useEffect(() => {
 }
 
 export function SiteFooter() {
-  return <footer className="site-footer" id="site-footer">
+  return <footer className="site-footer" id="contact">
     <div className="footer-top">
       <div className="footer-brand">
         <img src={wardeLogo.url} alt="Warde Interiors" width={120} height={80} loading="lazy" />
@@ -252,7 +277,7 @@ export function HomePage() {
     
 
 
-<section className="home-hero">
+<section id="hero" className="home-hero">
   <img
     src="https://i.postimg.cc/fb6kYmT0/hero-section-bg.png"
     alt="Contemporary residential interior designed by Warde Interiors"
@@ -303,7 +328,7 @@ export function HomePage() {
   </div>
 </section>
 
-<section className="intro-section">
+<section id="about" className="intro-section">
   <div className="intro-copy">
 
     <p className="eyebrow">
@@ -378,135 +403,154 @@ export function HomePage() {
 
 
     
-<section
-  id="design-philosophy"
-  className="philosophy-section"
-  data-scroll-reveal
->
-  <div className="philosophy-main">
-
-    {/* LEFT: INTERIOR IMAGE */}
-    <figure className="philosophy-image">
-      <img
-        src={philosophyPhoto.url}
-        alt="A thoughtfully designed residential interior with warm natural tones"
-        width={433}
-        height={800}
-        loading="lazy"
-      />
-    </figure>
-
-    {/* RIGHT: DESIGN PHILOSOPHY */}
-    <div className="philosophy-copy">
-
-      <div className="philosophy-eyebrow">
-        <p className="eyebrow">OUR DESIGN PHILOSOPHY</p>
-        <span />
-      </div>
-
-      <h2>
-        Function first.
-        <br />
-        Design that naturally
-        <br />
-        <em>follows.</em>
-      </h2>
-
-      <p>
-        Creating functional and aesthetically balanced spaces.
-        Emphasis on timeless design, thoughtful detailing and
-        material selection. Developing personalised interiors
-        that align with each client's lifestyle and requirements.
-      </p>
-
-    </div>
-    </div>
-    
-      {/* OUR PROCESS */}
-      <div id="our-process" className="process-section">
-    
-        <div className="process-heading">
-          <span />
-          <p>OUR PROCESS</p>
+  <section
+    id="design-philosophy"
+    className="philosophy-section"
+    data-scroll-reveal
+  >
+    <div className="philosophy-main">
+  
+      {/* LEFT: INTERIOR IMAGE */}
+      <figure className="philosophy-image">
+        <img
+          src={philosophyPhoto.url}
+          alt="A thoughtfully designed residential interior with warm natural tones"
+          width={433}
+          height={800}
+          loading="lazy"
+        />
+      </figure>
+  
+      {/* RIGHT: DESIGN PHILOSOPHY */}
+      <div className="philosophy-copy">
+  
+        <div className="philosophy-eyebrow">
+          <p className="eyebrow">OUR DESIGN PHILOSOPHY</p>
           <span />
         </div>
-    
-        <div className="process-grid">
-    
-          <div className="process-card">
-            <div className="process-icon-wrap">
-              <span className="process-number">01</span>
-              <div className="process-icon">
-                <MessagesSquare />
-              </div>
-            </div>
-            <h3>Understand</h3>
-            <p>
-              Understand the client's lifestyle, requirements
-              and vision.
-            </p>
-          </div>
-    
-          <div className="process-card">
-            <div className="process-icon-wrap">
-              <span className="process-number">02</span>
-              <div className="process-icon">
-                <Lightbulb />
-              </div>
-            </div>
-            <h3>Conceptualise</h3>
-            <p>
-              Develop the design direction around the space
-              and client needs.
-            </p>
-          </div>
-    
-          <div className="process-card">
-            <div className="process-icon-wrap">
-              <span className="process-number">03</span>
-              <div className="process-icon">
-                <DraftingCompass />
-              </div>
-            </div>
-            <h3>Design</h3>
-            <p>
-              Translate the concept into detailed design
-              and visualisation.
-            </p>
-          </div>
-    
-          <div className="process-card">
-            <div className="process-icon-wrap">
-              <span className="process-number">04</span>
-              <div className="process-icon">
-                <HardHat />
-              </div>
-            </div>
-            <h3>Execute</h3>
-            <p>
-              Coordinate the design through implementation.
-            </p>
-          </div>
-    
-          <div className="process-card">
-            <div className="process-icon-wrap">
-              <span className="process-number">05</span>
-              <div className="process-icon">
-                <House />
-              </div>
-            </div>
-            <h3>Handover</h3>
-            <p>
-              Deliver a finished space designed around the client.
-            </p>
-          </div>
-    
-        </div>
+  
+        <h2>
+          Function first.
+          <br />
+          Design that naturally
+          <br />
+          <em>follows.</em>
+        </h2>
+  
+        <p>
+          Creating functional and aesthetically balanced spaces.
+          Emphasis on timeless design, thoughtful detailing and
+          material selection. Developing personalised interiors
+          that align with each client's lifestyle and requirements.
+        </p>
+  
       </div>
-    
-    </section>
+      </div>
+      
+        {/* OUR PROCESS */}
+        <div id="our-process" className="process-section">
+      
+          <div className="process-heading">
+            <span />
+            <p>OUR PROCESS</p>
+            <span />
+          </div>
+      
+          <div className="process-grid">
+      
+            <div className="process-card">
+              <div className="process-icon-wrap">
+                <span className="process-number">01</span>
+                <div className="process-icon">
+                  <MessagesSquare />
+                </div>
+              </div>
+              <h3>Understand</h3>
+              <p>
+                Understand the client's lifestyle, requirements
+                and vision.
+              </p>
+            </div>
+      
+            <div className="process-card">
+              <div className="process-icon-wrap">
+                <span className="process-number">02</span>
+                <div className="process-icon">
+                  <Lightbulb />
+                </div>
+              </div>
+              <h3>Conceptualise</h3>
+              <p>
+                Develop the design direction around the space
+                and client needs.
+              </p>
+            </div>
+      
+            <div className="process-card">
+              <div className="process-icon-wrap">
+                <span className="process-number">03</span>
+                <div className="process-icon">
+                  <DraftingCompass />
+                </div>
+              </div>
+              <h3>Design</h3>
+              <p>
+                Translate the concept into detailed design
+                and visualisation.
+              </p>
+            </div>
+      
+            <div className="process-card">
+              <div className="process-icon-wrap">
+                <span className="process-number">04</span>
+                <div className="process-icon">
+                  <HardHat />
+                </div>
+              </div>
+              <h3>Execute</h3>
+              <p>
+                Coordinate the design through implementation.
+              </p>
+            </div>
+      
+            <div className="process-card">
+              <div className="process-icon-wrap">
+                <span className="process-number">05</span>
+                <div className="process-icon">
+                  <House />
+                </div>
+              </div>
+              <h3>Handover</h3>
+              <p>
+                Deliver a finished space designed around the client.
+              </p>
+            </div>
+      
+          </div>
+        </div>
+      
+      </section>
 
-    <section className="services-peek section-wrap" data-scroll-reveal><div className="section-heading-row"><div><p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p><h2>Our services</h2></div><Link to="/services" className="text-link">Explore services <ArrowRight aria-hidden="true" /></Link></div><ServiceImageGrid compact /></section>
+
+      <section
+        id="services"
+        className="services-peek section-wrap"
+        data-scroll-reveal
+      >
+        <div className="section-heading-row">
+          <div>
+            <p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p>
+            <h2>Our services</h2>
+          </div>
+      
+          <a href="/#services" className="text-link">
+            Explore services
+            <ArrowRight aria-hidden="true" />
+          </a>
+        </div>
+      
+        <ServiceImageGrid compact />
+      </section>
 
     <div data-scroll-reveal><WhyWardeSection /></div>
 
