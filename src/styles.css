@@ -222,7 +222,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 .philosophy-section {
   width: 100%;
-  padding: 65px 5.5%;
+  padding: 65px 5.5% 32px;
   background: var(--secondary);
   scroll-margin-top: 90px;
 }
@@ -326,8 +326,12 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 /* OUR PROCESS */
 
 .process-section {
-  padding: 32px 6.5% 75px;
-  background: #F8F0E5;
+  position: relative;
+  margin: 0 12px;
+  padding: 38px 6.5% 65px;
+  background: #FBF3E9;
+  border-radius: 26px 26px 0 0;
+  overflow: hidden;
   scroll-margin-top: 100px;
 }
 
@@ -2484,4 +2488,130 @@ body:not(:has(.home-hero)) .site-header__inner {
     font-size: 14px;
     line-height: 1.85;
   }
+}
+
+
+/* PROCESS SECTION - MOBILE */
+
+@media (max-width: 680px) {
+  .philosophy-section {
+    padding-bottom: 28px;
+  }
+
+  .process-section {
+    margin: 0 8px;
+    padding: 38px 20px 48px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .process-heading {
+    gap: 13px;
+    margin-bottom: 36px;
+  }
+
+  .process-heading p {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .process-grid {
+    gap: 38px 18px;
+  }
+
+  .process-card h3 {
+    font-size: 23px;
+  }
+
+  .process-card p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .process-icon {
+    width: 76px;
+    height: 76px;
+  }
+
+  .process-icon svg {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+
+/* =========================================
+   PROCESS SECTION - VISIBILITY REFINEMENT
+========================================= */
+
+.process-heading {
+  gap: 30px;
+  margin-bottom: 48px;
+}
+
+.process-heading p {
+  color: #68432D;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+.process-heading span {
+  width: min(220px, 20%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #B98A48
+  );
+}
+
+.process-grid {
+  gap: 24px;
+}
+
+.process-grid::before {
+  top: 39px;
+  left: 9%;
+  right: 9%;
+  background: #C49A60;
+}
+
+.process-icon-wrap {
+  margin-bottom: 16px;
+}
+
+.process-number {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #57351F;
+  border-color: #D7B58A;
+}
+
+.process-icon {
+  width: 84px;
+  height: 84px;
+  border-color: #D7B58A;
+  color: #68432D;
+}
+
+.process-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.5;
+}
+
+.process-card h3 {
+  margin-bottom: 12px;
+  color: #57351F;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.process-card p {
+  max-width: 240px;
+  color: #684A35;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
 }
