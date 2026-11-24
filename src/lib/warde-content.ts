@@ -1,5 +1,5 @@
-
-export const projectEnquiryUrl = "https://forms.gle/f8t4z6BCVYeGcsz8A";
+export const projectEnquiryEmbedUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfehsj3z0FRThk2rmUoaVvO1u83Mew66rCVGy9c86Um65h_BA/viewform?embedded=true";
 
 export const projectPlaceholders = [
   {
