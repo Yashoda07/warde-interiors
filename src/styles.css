@@ -2650,3 +2650,61 @@ body:not(:has(.home-hero)) .site-header__inner {
     border-radius: 22px !important;
   }
 }
+
+
+/* =========================================
+   SECTION NAVIGATION
+========================================= */
+
+#hero,
+#about,
+#projects,
+#services,
+#our-process,
+#contact {
+  scroll-margin-top: 125px;
+}
+
+/* =========================================
+   GOOGLE FORM MODAL
+========================================= */
+
+.project-form-dialog {
+  width: min(94vw, 900px) !important;
+  max-width: 900px !important;
+  height: 88vh;
+  max-height: 88vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid rgb(173 137 91 / 40%);
+  border-radius: 18px;
+  background: #FAF8F4;
+}
+
+.project-form-dialog > div:first-child {
+  flex-shrink: 0;
+}
+
+.project-form-dialog iframe {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #FFFFFF;
+}
+
+@media (max-width: 680px) {
+  .project-form-dialog {
+    width: 96vw !important;
+    height: 90dvh;
+    max-height: 90dvh;
+    padding: 18px;
+    gap: 12px;
+    border-radius: 14px;
+  }
+}
