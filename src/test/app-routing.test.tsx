@@ -3,7 +3,10 @@ import { createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
-import { projectEnquiryUrl, projectPlaceholders } from "@/lib/warde-content";
+import {
+  projectEnquiryEmbedUrl,
+  projectPlaceholders,
+} from "@/lib/warde-content";
 
 // Match routes without running loaders or rendering: loaders may need a server or
 // network the test run lacks, and jsdom never loads the stylesheets React waits on.
@@ -20,7 +23,9 @@ describe("App routing", () => {
     expect(projectPlaceholders).toHaveLength(6);
   });
 
-  it("sends project enquiries to the supplied Google Form", () => {
-    expect(projectEnquiryUrl).toBe("https://forms.gle/f8t4z6BCVYeGcsz8A");
-  });
+  it("uses the supplied Google Form embed URL", () => {
+  expect(projectEnquiryEmbedUrl).toBe(
+    "https://docs.google.com/forms/d/e/1FAIpQLSfehsj3z0FRThk2rmUoaVvO1u83Mew66rCVGy9c86Um65h_BA/viewform?embedded=true"
+  );
+});
 });
