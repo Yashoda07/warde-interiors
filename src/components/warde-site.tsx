@@ -377,54 +377,50 @@ export function HomePage() {
     </section>
 
 
-    <section
-      id="design-philosophy"
-      className="philosophy-section"
-      data-scroll-reveal
-    >
-      {/* DESIGN PHILOSOPHY */}
-      <div className="philosophy-main">
     
-        <div className="philosophy-copy">
-    
-          <div className="philosophy-eyebrow">
-            <p className="eyebrow">OUR DESIGN PHILOSOPHY</p>
-            <span />
-          </div>
-    
-          <h2>
-            Function first.
-            <br />
-            Design that naturally
-            <br />
-            <em>follows.</em>
-          </h2>
-    
-          <p>
-            Creating functional and aesthetically balanced spaces.
-            Emphasis on timeless design, thoughtful detailing and
-            material selection. Developing personalised interiors
-            that align with each client's lifestyle and requirements.
-          </p>
-    
-          <a href="#our-process" className="philosophy-cta">
-            Explore our process
-            <ArrowRight aria-hidden="true" />
-          </a>
-    
-        </div>
-    
-        <figure className="philosophy-image">
-          <img
-            src={philosophyPhoto.url}
-            alt="A thoughtfully designed residential interior with warm natural tones"
-            width={433}
-            height={800}
-            loading="lazy"
-          />
-        </figure>
-    
+<section
+  id="design-philosophy"
+  className="philosophy-section"
+  data-scroll-reveal
+>
+  <div className="philosophy-main">
+
+    {/* LEFT: INTERIOR IMAGE */}
+    <figure className="philosophy-image">
+      <img
+        src={philosophyPhoto.url}
+        alt="A thoughtfully designed residential interior with warm natural tones"
+        width={433}
+        height={800}
+        loading="lazy"
+      />
+    </figure>
+
+    {/* RIGHT: DESIGN PHILOSOPHY */}
+    <div className="philosophy-copy">
+
+      <div className="philosophy-eyebrow">
+        <p className="eyebrow">OUR DESIGN PHILOSOPHY</p>
+        <span />
       </div>
+
+      <h2>
+        Function first.
+        <br />
+        Design that naturally
+        <br />
+        <em>follows.</em>
+      </h2>
+
+      <p>
+        Creating functional and aesthetically balanced spaces.
+        Emphasis on timeless design, thoughtful detailing and
+        material selection. Developing personalised interiors
+        that align with each client's lifestyle and requirements.
+      </p>
+
+    </div>
+    </div>
     
       {/* OUR PROCESS */}
       <div id="our-process" className="process-section">
