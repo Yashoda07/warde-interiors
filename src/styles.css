@@ -473,6 +473,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .curved-process-step h3 { margin: 0 0 4px; font-family: var(--font-serif); font-size: 25px; font-weight: 500; }
 .curved-process-step p { margin: 0; color: var(--muted-foreground); font-size: 12px; line-height: 1.55; }
 /* WHY WARDE INTERIORS */
+/* WHY WARDE INTERIORS */
 .why-section {
   display: grid;
   grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
@@ -481,15 +482,13 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   padding-block: 120px;
   min-height: 150vh;
   position: relative;
-
-  view-timeline-name: --why-section-scroll;
-  view-timeline-axis: block;
 }
 
-/* Founder image */
+/* Founder portrait */
 .why-photo {
   position: sticky;
   top: 12vh;
+  align-self: start;
   margin: 0;
   height: 76vh;
   min-height: 550px;
@@ -505,7 +504,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   object-position: center top;
 }
 
-/* Content */
+/* Right-side content */
 .why-content {
   padding-top: 8px;
 }
@@ -519,8 +518,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   line-height: 1.08;
 }
 
-/* Reason rows */
-/* Progressive heading stack */
+/* Reasons */
 .why-reasons {
   border-top: 1px solid var(--border);
 }
@@ -529,22 +527,16 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   position: relative;
   padding: 30px 0 32px;
   border-bottom: 1px solid var(--border);
+
   view-timeline-name: --reason-scroll;
   view-timeline-axis: block;
 }
 
 .why-reason-heading {
-  position: sticky;
-  top: calc(100px + (var(--reason-index) * 78px));
-  z-index: calc(10 + var(--reason-index));
-
   display: grid;
   grid-template-columns: 65px minmax(0, 1fr);
   align-items: center;
   gap: 20px;
-
-  background: var(--background);
-  padding-block: 12px;
 }
 
 .why-number {
@@ -563,7 +555,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   color: var(--foreground);
 }
 
-/* Descriptions fade individually */
+/* Individual description fade */
 .why-description {
   margin: 14px 0 0 85px;
   max-width: 700px;
@@ -2257,7 +2249,9 @@ body:not(:has(.home-hero)) .site-header__inner {
     padding-block: 40px;
   }
 }
+
 /* WHY WARDE - RESPONSIVE */
+
 @media (max-width: 900px) {
   .why-section {
     grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
@@ -2285,9 +2279,9 @@ body:not(:has(.home-hero)) .site-header__inner {
   .why-section {
     display: block;
     padding-block: 75px;
+    min-height: 150vh;
   }
 
-  /* No founder image on mobile */
   .why-photo {
     display: none;
   }
@@ -2326,86 +2320,6 @@ body:not(:has(.home-hero)) .site-header__inner {
   }
 }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .why-description {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-}
-
-/* WHY WARDE - RESPONSIVE */
-@media (max-width: 900px) {
-  .why-section {
-    grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
-    gap: 35px;
-    padding-block: 85px;
-  }
-
-  .why-photo {
-    top: 12vh;
-    height: 70vh;
-    min-height: 450px;
-  }
-
-  .why-reason-heading {
-    grid-template-columns: 50px minmax(0, 1fr);
-    gap: 14px;
-  }
-
-  .why-description {
-    margin-left: 64px;
-  }
-}
-
-@media (max-width: 680px) {
-  .why-section {
-    display: block;
-    padding-block: 75px;
-    min-height: 150vh;
-  }
-
-  /* Hide founder portrait on mobile */
-  .why-photo {
-    display: none;
-  }
-
-  .why-content {
-    width: 100%;
-    padding-top: 0;
-  }
-
-  .why-section h2 {
-    font-size: clamp(38px, 10vw, 52px);
-    margin-bottom: 35px;
-  }
-
-  .why-reason {
-    padding: 25px 0;
-  }
-
-  .why-reason-heading {
-  grid-template-columns: 45px minmax(0, 1fr);
-  gap: 12px;
-  top: calc(75px + (var(--reason-index) * 65px));
-}
-
-.why-number {
-  font-size: 28px;
-}
-
-.why-reason-heading h3 {
-  font-size: clamp(23px, 6vw, 30px);
-}
-
-.why-description {
-  margin: 12px 0 0 57px;
-  font-size: 14px;
-  line-height: 1.75;
-  }
-}
-
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .why-description {
     animation: none !important;
