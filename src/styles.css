@@ -2708,3 +2708,22 @@ body:not(:has(.home-hero)) .site-header__inner {
     border-radius: 14px;
   }
 }
+
+/* Footer enquiry button */
+
+.footer-project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-project-cta:hover {
+  color: var(--accent);
+}
