@@ -125,11 +125,12 @@ export function SiteHeader() {
           <a href="/#contact" className="nav-link">Contact</a>
         </nav>
 
-
-        <Button asChild className="header-cta">
-          <a href={projectEnquiryUrl} target="_blank" rel="noreferrer">
-            Start your project <ArrowUpRight aria-hidden="true" />
-          </a>
+        <Button
+          className="header-cta"
+          onClick={() => setProjectFormOpen(true)}
+        >
+          Start your project
+          <ArrowUpRight aria-hidden="true" />
         </Button>
 
         <Button
@@ -198,15 +199,15 @@ export function SiteHeader() {
               </a>
             </div>
 
-            <Button asChild className="mobile-nav-cta">
-              <a
-                href={projectEnquiryUrl}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setMenuOpen(false)}
-              >
-                Start Your Project <ArrowRight aria-hidden="true" />
-              </a>
+            <Button
+              className="mobile-nav-cta"
+              onClick={() => {
+                setMenuOpen(false);
+                setProjectFormOpen(true);
+              }}
+            >
+              Start Your Project
+              <ArrowRight aria-hidden="true" />
             </Button>
           </nav>
         </div>
@@ -243,7 +244,15 @@ export function SiteFooter() {
         <p>Thoughtful spaces, designed around you.</p>
       </div>
       <div className="footer-links"><span className="eyebrow">EXPLORE</span><Link to="/projects">Projects</Link><Link to="/about">About</Link><Link to="/services">Services</Link><a href="/#design-philosophy">Our process</a></div>
-      <div className="footer-links"><span className="eyebrow">GET IN TOUCH</span><a href="mailto:Wardesamiksha58@gmail.com">Wardesamiksha58@gmail.com</a><a href="tel:+919324190732">+91 93241 90732</a><a href="https://www.instagram.com/warde_interiors/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /> Instagram</a><span>Thane, Maharashtra, India</span><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></div>
+      <div className="footer-links"><span className="eyebrow">GET IN TOUCH</span><a href="mailto:Wardesamiksha58@gmail.com">Wardesamiksha58@gmail.com</a><a href="tel:+919324190732">+91 93241 90732</a><a href="https://www.instagram.com/warde_interiors/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /> Instagram</a><span>Thane, Maharashtra, India</span>
+        <button
+          type="button"
+          className="footer-project-cta"
+          onClick={openProjectEnquiry}
+        >
+          Start your project
+          <ArrowUpRight aria-hidden="true" />
+        </button></div>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Warde Interiors</span><Link to="/privacy">Privacy policy</Link><span>Designed with intention in Thane</span></div>
   </footer>;
@@ -304,8 +313,15 @@ export function ProjectList({ limit }: { limit?: number }) {
 export function EnquiryCta({ compact = false }: { compact?: boolean }) {
   return <section className={`enquiry-cta${compact ? " enquiry-cta--compact" : ""}`}>
     <div><p className="eyebrow">A SPACE THAT FEELS LIKE YOURS</p><h2>Let’s create something<br className="desktop-break" /> beautiful together.</h2><p>Tell us about your space and the way you envision living.</p></div>
-    <Button asChild variant="outline" className="cta-outline"><a href={projectEnquiryUrl} target="_blank" rel="noreferrer">Start your project <ArrowUpRight aria-hidden="true" /></a></Button>
-  </section>;
+      <Button
+        variant="outline"
+        className="cta-outline"
+        onClick={openProjectEnquiry}
+      >
+        Start your project
+        <ArrowUpRight aria-hidden="true" />
+      </Button>  
+    </section>;
 }
 
 export function HomePage() {
@@ -368,14 +384,13 @@ export function HomePage() {
         </Link>
       </Button>
 
-      <a
-        href={projectEnquiryUrl}
-        target="_blank"
-        rel="noreferrer"
+      <button
+        type="button"
         className="hero-secondary-cta"
+        onClick={openProjectEnquiry}
       >
         Let's Discuss Your Space
-      </a>
+      </button>
 
     </div>
   </div>
@@ -751,7 +766,14 @@ export function ServicesPage() {
 
 function ServiceImageGrid({ compact = false }: { compact?: boolean }) {
   const services = [{ number: "01", name: "End-to-End Interior Design", copy: "Complete interior-design services from initial consultation and concept development through design coordination and execution.", image: heroImage }, { number: "02", name: "Colour Consultancy", copy: "A completely virtual service helping clients select appropriate colour palettes for their spaces.", image: diningImage }, { number: "03", name: "3D Design Consultancy", copy: "3D visualisation and design consultancy for clients who want to understand and visualise their space before execution.", image: bedroomImage }];
-  return <section className={`service-image-grid section-wrap${compact ? " service-image-grid--compact" : ""}`}>{services.map((service) => <article className="service-image-item" key={service.number}><figure><img src={service.image} alt={`Illustrative interior image for ${service.name}; not a completed Warde Interiors project`} loading="lazy" /><figcaption>Illustrative image · studio photography to be added</figcaption></figure><span className="service-gold-rule" /><p className="eyebrow">{service.number}</p><h2>{service.name}</h2><p>{service.copy}</p>{!compact && <a href={projectEnquiryUrl} target="_blank" rel="noreferrer" className="text-link">Tell us what you have in mind <ArrowRight aria-hidden="true" /></a>}</article>)}</section>;
+  return <section className={`service-image-grid section-wrap${compact ? " service-image-grid--compact" : ""}`}>{services.map((service) => <article className="service-image-item" key={service.number}><figure><img src={service.image} alt={`Illustrative interior image for ${service.name}; not a completed Warde Interiors project`} loading="lazy" /><figcaption>Illustrative image · studio photography to be added</figcaption></figure><span className="service-gold-rule" /><p className="eyebrow">{service.number}</p><h2>{service.name}</h2><p>{service.copy}</p>{!compact && <button
+  type="button"
+  className="text-link"
+  onClick={openProjectEnquiry}
+>
+  Tell us what you have in mind
+  <ArrowRight aria-hidden="true" />
+  </button>}</article>)}</section>;
 }
 
 const wardeReasons = [
