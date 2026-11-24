@@ -2235,7 +2235,7 @@ body:not(:has(.home-hero)) .site-header__inner {
   }
 }
 
-/* WHY WARDE - RESPONSIVE */
+/* WHY WARDE - RESPONSIVE STACK */
 
 @media (max-width: 900px) {
   .why-section {
@@ -2248,6 +2248,10 @@ body:not(:has(.home-hero)) .site-header__inner {
     top: 12vh;
     height: 70vh;
     min-height: 450px;
+  }
+
+  .why-reason {
+    top: calc(85px + (var(--reason-index) * 68px));
   }
 
   .why-reason-heading {
@@ -2264,7 +2268,6 @@ body:not(:has(.home-hero)) .site-header__inner {
   .why-section {
     display: block;
     padding-block: 75px;
-    min-height: 150vh;
   }
 
   .why-photo {
@@ -2281,8 +2284,13 @@ body:not(:has(.home-hero)) .site-header__inner {
     margin-bottom: 35px;
   }
 
+  .why-reasons {
+    padding-bottom: 70vh;
+  }
+
   .why-reason {
-    padding: 25px 0;
+    top: calc(75px + (var(--reason-index) * 65px));
+    padding: 14px 0 18px;
   }
 
   .why-reason-heading {
@@ -2307,11 +2315,9 @@ body:not(:has(.home-hero)) .site-header__inner {
 
 @media (prefers-reduced-motion: reduce) {
   .why-description {
-    animation: none !important;
-    opacity: 1 !important;
+    transition: none !important;
   }
 }
-
 
 /* =========================================
    DESIGN PHILOSOPHY RESPONSIVE
