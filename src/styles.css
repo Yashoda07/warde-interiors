@@ -477,8 +477,9 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .why-section {
   display: grid;
   grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
-  align-items: start;
+  align-items: stretch;
   gap: clamp(45px, 6vw, 100px);
+
   padding-block: 120px;
   position: relative;
 }
@@ -488,6 +489,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   position: sticky;
   top: 12vh;
   align-self: start;
+
   margin: 0;
   height: 76vh;
   min-height: 550px;
@@ -516,8 +518,10 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 /* Extra scroll space allows the complete stack to form */
 .why-reasons {
   position: relative;
-  border-top: 1px solid var(--border);
-  padding-bottom: 85vh;
+  border-top: 2px solid #b99a62;
+
+  /* Extra scroll runway to hold the final composition */
+  padding-bottom: 110vh;
 }
 
 /* Each complete reason becomes a sticky layer */
@@ -527,7 +531,10 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   z-index: calc(10 + var(--reason-index));
 
   padding: 18px 0 24px;
-  border-bottom: 1px solid var(--border);
+
+  /* Golden divider */
+  border-bottom: 2px solid #b99a62;
+
   background: var(--background);
 }
 
@@ -2285,8 +2292,8 @@ body:not(:has(.home-hero)) .site-header__inner {
   }
 
   .why-reasons {
-    padding-bottom: 70vh;
-  }
+  padding-bottom: 85vh;
+}
 
   .why-reason {
     top: calc(75px + (var(--reason-index) * 65px));
