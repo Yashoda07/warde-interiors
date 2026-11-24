@@ -895,7 +895,7 @@ function TestimonialCard({ item }: { item: (typeof demoTestimonials)[number] }) 
 }
 
 function TestimonialsMarquee() {
-  return <section className="testimonial-peek testimonial-marquee-section"><div className="testimonial-layout"><div className="testimonial-heading"><p className="eyebrow">A PERSONAL DESIGN JOURNEY</p><h2>Words from those we’ve served.</h2></div><div className="testimonial-columns"><TestimonialColumn items={demoTestimonials.slice(0, 4)} direction="up" /><TestimonialColumn items={demoTestimonials.slice(4)} direction="down" /></div></div><p className="testimonial-placeholder">Client feedback will appear here when supplied by the studio.</p></section>;
+  return <section className="testimonial-peek testimonial-marquee-section"><div className="testimonial-layout"><div className="testimonial-heading"><p className="eyebrow">A PERSONAL DESIGN JOURNEY</p><h2>Words from those we’ve served.</h2></div><div className="testimonial-columns"><TestimonialColumn items={demoTestimonials.slice(0, 4)} direction="up" /><TestimonialColumn items={demoTestimonials.slice(4)} direction="down" /></div></div></section>;
 }
 
 export function PrivacyPage() {
