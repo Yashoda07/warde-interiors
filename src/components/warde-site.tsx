@@ -243,7 +243,17 @@ export function SiteFooter() {
         <img src={wardeLogo.url} alt="Warde Interiors" width={120} height={80} loading="lazy" />
         <p>Thoughtful spaces, designed around you.</p>
       </div>
-      <div className="footer-links"><span className="eyebrow">EXPLORE</span><Link to="/projects">Projects</Link><Link to="/about">About</Link><Link to="/services">Services</Link><a href="/#design-philosophy">Our process</a></div>
+      <div className="footer-links">
+        <span className="eyebrow">EXPLORE</span>
+      
+        <a href="/#projects">Projects</a>
+      
+        <Link to="/about">About</Link>
+      
+        <a href="/#services">Services</a>
+      
+        <a href="/#our-process">Our process</a>
+      </div>      
       <div className="footer-links"><span className="eyebrow">GET IN TOUCH</span><a href="mailto:Wardesamiksha58@gmail.com">Wardesamiksha58@gmail.com</a><a href="tel:+919324190732">+91 93241 90732</a><a href="https://www.instagram.com/warde_interiors/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /> Instagram</a><span>Thane, Maharashtra, India</span>
         <button
           type="button"
@@ -378,10 +388,10 @@ export function HomePage() {
     <div className="hero-actions">
 
       <Button asChild className="hero-primary-cta">
-        <Link to="/projects">
+        <a href="/#projects">
           Explore Projects
           <ArrowRight aria-hidden="true" />
-        </Link>
+        </a>
       </Button>
 
       <button
@@ -671,9 +681,9 @@ export function ProjectDetailPage({ slug }: { slug: string }) {
           lead="The requested project could not be found."
         />
         <div className="section-wrap projects-page">
-          <Link to="/projects" className="text-link">
+          <a href="/#projects" className="text-link">
             Return to projects <ArrowRight />
-          </Link>
+          </a>
         </div>
       </main>
     );
