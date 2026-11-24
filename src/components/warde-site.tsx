@@ -620,11 +620,6 @@ export function HomePage() {
             <p className="eyebrow">WHAT WE CAN CREATE TOGETHER</p>
             <h2>Our services</h2>
           </div>
-      
-          <a href="/#services" className="text-link">
-            Explore services
-            <ArrowRight aria-hidden="true" />
-          </a>
         </div>
       
         <ServiceImageGrid compact />
