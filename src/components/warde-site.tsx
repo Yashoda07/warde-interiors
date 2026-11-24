@@ -783,6 +783,59 @@ const wardeReasons = [
 ];
 
 function WhyWardeSection() {
+  useEffect(() => {
+    const section = document.querySelector(".why-section");
+    if (!section) return;
+
+    const reasons = Array.from(
+      section.querySelectorAll<HTMLElement>(".why-reason")
+    );
+
+    const originalPositions = reasons.map(
+      (reason) => reason.getBoundingClientRect().top + window.scrollY
+    );
+
+    const updateDescriptions = () => {
+      const scrollY = window.scrollY;
+
+      reasons.forEach((reason, index) => {
+        const heading = reason.querySelector(".why-reason-heading");
+        const description = reason.querySelector(".why-description");
+
+        if (!heading || !description) return;
+
+        const absoluteTop = originalPositions[index];
+        const stickyTop = parseFloat(getComputedStyle(reason).top) || 0;
+
+        const fadeStart = absoluteTop - stickyTop;
+        const fadeDistance = 180;
+
+        const progress = Math.max(
+          0,
+          Math.min(1, (scrollY - fadeStart) / fadeDistance)
+        );
+
+        description.style.setProperty(
+          "--description-opacity",
+          String(1 - progress)
+        );
+      });
+    };
+
+    updateDescriptions();
+
+    window.addEventListener("scroll", updateDescriptions, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateDescriptions);
+
+    return () => {
+      window.removeEventListener("scroll", updateDescriptions);
+      window.removeEventListener("resize", updateDescriptions);
+    };
+  }, []);
+
   return (
     <section className="why-section section-wrap">
       <figure className="why-photo">
@@ -799,7 +852,11 @@ function WhyWardeSection() {
 
         <div className="why-reasons">
           {wardeReasons.map(({ title, summary }, index) => (
-            <article className="why-reason" key={title}>
+            <article
+              className="why-reason"
+              key={title}
+              style={{ "--reason-index": index } as React.CSSProperties}
+            >
               <div className="why-reason-heading">
                 <span className="why-number">
                   0{index + 1}
