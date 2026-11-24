@@ -472,19 +472,18 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .curved-process-step .process-number { display: grid; place-items: center; width: 42px; aspect-ratio: 1; border: 1px solid var(--primary); border-radius: 50%; background: var(--background); color: var(--primary); font-size: 17px; }
 .curved-process-step h3 { margin: 0 0 4px; font-family: var(--font-serif); font-size: 25px; font-weight: 500; }
 .curved-process-step p { margin: 0; color: var(--muted-foreground); font-size: 12px; line-height: 1.55; }
-/* WHY WARDE INTERIORS */
-/* WHY WARDE INTERIORS */
+/* WHY WARDE INTERIORS - PROGRESSIVE STACK */
+
 .why-section {
   display: grid;
   grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
   align-items: start;
   gap: clamp(45px, 6vw, 100px);
   padding-block: 120px;
-  min-height: 150vh;
   position: relative;
 }
 
-/* Founder portrait */
+/* Founder image stays pinned */
 .why-photo {
   position: sticky;
   top: 12vh;
@@ -504,7 +503,7 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   object-position: center top;
 }
 
-/* Right-side content */
+/* Right content */
 .why-content {
   padding-top: 8px;
 }
@@ -512,31 +511,33 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 .why-section h2 {
   max-width: 700px;
   margin: 0 0 48px;
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(40px, 4.5vw, 66px);
-  line-height: 1.08;
 }
 
-/* Reasons */
+/* Extra scroll space allows the complete stack to form */
 .why-reasons {
-  border-top: 1px solid var(--border);
-}
-
-.why-reason {
   position: relative;
-  padding: 30px 0 32px;
-  border-bottom: 1px solid var(--border);
-
-  view-timeline-name: --reason-scroll;
-  view-timeline-axis: block;
+  border-top: 1px solid var(--border);
+  padding-bottom: 85vh;
 }
 
+/* Each complete reason becomes a sticky layer */
+.why-reason {
+  position: sticky;
+  top: calc(100px + (var(--reason-index) * 78px));
+  z-index: calc(10 + var(--reason-index));
+
+  padding: 18px 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+}
+
+/* Heading */
 .why-reason-heading {
   display: grid;
   grid-template-columns: 65px minmax(0, 1fr);
   align-items: center;
   gap: 20px;
+  padding-block: 10px;
 }
 
 .why-number {
@@ -555,31 +556,15 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
   color: var(--foreground);
 }
 
-/* Individual description fade */
+/* Individual descriptions */
 .why-description {
   margin: 14px 0 0 85px;
   max-width: 700px;
   color: var(--muted-foreground);
   font-size: 15px;
   line-height: 1.8;
-}
-
-@supports (animation-timeline: view()) {
-  .why-description {
-    animation: why-description-fade linear both;
-    animation-timeline: --reason-scroll;
-    animation-range: exit 0% exit 100%;
-  }
-}
-
-@keyframes why-description-fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
+  opacity: var(--description-opacity, 1);
+  transition: none;
 }
 .testimonial-peek { padding: 90px max(24px, calc((100vw - 1320px) / 2)); text-align: left; background: var(--secondary); }
 .testimonial-peek h2 { margin: 0 0 18px; font-family: var(--font-serif); font-size: clamp(38px, 5vw, 62px); font-weight: 400; line-height: 1.05; }
