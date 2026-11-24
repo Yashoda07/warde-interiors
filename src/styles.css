@@ -2615,3 +2615,38 @@ body:not(:has(.home-hero)) .site-header__inner {
   font-weight: 400;
   line-height: 1.85;
 }
+
+
+/* =========================================
+   PROCESS SECTION - FINAL SPACING & CURVES
+========================================= */
+
+/* Create actual separation between sections */
+.philosophy-section {
+  padding-bottom: 0 !important;
+}
+
+.process-section {
+  position: relative;
+
+  /* Visible gap above and below */
+  margin: 28px 18px 28px !important;
+
+  /* Space inside the section */
+  padding: 42px 6.5% 55px;
+
+  /* Rounded on ALL four corners */
+  border-radius: 28px !important;
+
+  background: #FBF3E9;
+  overflow: hidden;
+}
+
+/* Ensure the curves remain visible on mobile */
+@media (max-width: 680px) {
+  .process-section {
+    margin: 22px 10px 22px !important;
+    padding: 38px 20px 45px;
+    border-radius: 22px !important;
+  }
+}
