@@ -3228,3 +3228,441 @@ body:not(:has(.home-hero)) .site-header__inner {
     font-size: 10px;
   }
 }
+
+
+/* ==============================================
+   NAVBAR — INTERACTION & RESPONSIVE FIX
+   ============================================== */
+
+/* Restore interaction on the actual navbar capsule */
+.site-header__inner {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 1001;
+}
+
+/* Keep the header itself from blocking page interaction */
+.site-header {
+  pointer-events: none;
+}
+
+/* All interactive children of header should respond */
+.site-header__inner a,
+.site-header__inner button {
+  pointer-events: auto;
+}
+
+/* Tablet: switch to hamburger before the navbar gets crowded */
+@media (max-width: 760px) {
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .site-header__inner {
+    width: calc(100% - 28px);
+    min-height: 62px;
+    padding: 5px 14px;
+    gap: 10px;
+    border-radius: 18px;
+  }
+
+  .desktop-nav,
+  .site-header .header-cta {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex !important;
+    pointer-events: auto !important;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+}
+
+/* Mobile menu overlay must sit above all page content */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* Backdrop handles outside clicks */
+.mobile-menu-backdrop {
+  z-index: 0;
+  pointer-events: auto;
+}
+
+/* Panel and all controls stay interactive */
+.mobile-menu-panel {
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.mobile-menu-panel a,
+.mobile-menu-panel button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Ensure mobile panel does not become too tall or clipped */
+@media (max-width: 760px) {
+  .mobile-menu-overlay {
+    padding: 12px;
+  }
+
+  .mobile-menu-panel {
+    width: 100%;
+    max-height: calc(100svh - 24px);
+    height: auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 20px 24px;
+    border-radius: 22px;
+  }
+
+  .mobile-menu-top {
+    min-height: 82px;
+  }
+
+  .mobile-menu-brand img {
+    width: 115px;
+  }
+
+  .mobile-menu-close {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mobile-menu-links {
+    margin-top: 8px;
+  }
+
+  .mobile-menu-links a {
+    padding: 13px 6px;
+    font-size: clamp(22px, 6vw, 32px);
+    line-height: 1.15;
+  }
+
+  .mobile-menu-panel .mobile-nav-cta {
+    min-height: 52px;
+    margin-top: 18px;
+    font-size: 17px;
+  }
+}
+
+
+/* ==============================================
+   TESTIMONIALS — MOBILE HORIZONTAL MARQUEE
+   ============================================== */
+
+@media (max-width: 760px) {
+
+  /* Heading comes first */
+  .testimonial-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    min-height: 0;
+  }
+
+  .testimonial-heading {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+  }
+
+  .testimonial-heading h2 {
+    max-width: 520px;
+    font-size: clamp(36px, 9vw, 48px);
+    line-height: 1.05;
+  }
+
+  /* Switch the review area to a horizontal track */
+  .testimonial-columns {
+    display: block;
+    width: calc(100% + 24px);
+    height: auto;
+    margin-right: -12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testimonial-columns::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Show only one marquee row */
+  .testimonial-column--down {
+    display: none !important;
+  }
+
+  .testimonial-column--up {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .testimonial-column--up .testimonial-track {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    gap: 14px;
+    animation: testimonial-horizontal 48s linear infinite;
+    will-change: transform;
+  }
+
+  .testimonial-column--up .testimonial-group {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    gap: 14px;
+    padding: 0;
+  }
+
+  /* Individual review card */
+  .testimonial-demo {
+    width: min(78vw, 340px);
+    min-width: min(78vw, 340px);
+    min-height: 220px;
+    padding: 20px;
+    scroll-snap-align: start;
+    background: #fffdf9;
+    border: 1px solid #e6dccd;
+  }
+
+  .testimonial-demo > p {
+    min-height: 90px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* Horizontal movement */
+  @keyframes testimonial-horizontal {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause when touched or hovered */
+  .testimonial-column--up:hover .testimonial-track,
+  .testimonial-column--up:active .testimonial-track {
+    animation-play-state: paused;
+  }
+
+  /* Mobile section spacing */
+  .testimonial-peek {
+    padding: 62px 20px;
+    overflow: hidden;
+  }
+}
+
+/* Reduce motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-column--up .testimonial-track {
+    animation: none !important;
+  }
+}
+
+
+/* ==============================================
+   CTA + FOOTER — MATCH LUXURY REFERENCE
+   ============================================== */
+
+.enquiry-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  min-height: 300px;
+  padding: 65px max(7vw, calc((100vw - 1200px) / 2));
+  background:
+    radial-gradient(
+      ellipse at 75% 25%,
+      rgb(255 255 255 / 45%),
+      transparent 50%
+    ),
+    #f3e6d6;
+  color: #493326;
+}
+
+.enquiry-cta > div {
+  max-width: 760px;
+}
+
+.enquiry-cta .eyebrow {
+  color: #94683c;
+  letter-spacing: 0.13em;
+  font-size: 11px;
+}
+
+.enquiry-cta h2 {
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #493326;
+  margin: 12px 0 18px;
+}
+
+.enquiry-cta h2 br {
+  display: block;
+}
+
+.enquiry-cta p:not(.eyebrow) {
+  color: #715b48;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Visible CTA button */
+.enquiry-cta .cta-outline {
+  display: inline-flex !important;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 230px;
+  min-height: 58px;
+  padding: 15px 25px !important;
+  border: 1px solid #bd925b !important;
+  border-radius: 999px;
+  background: #59391f !important;
+  color: #fff8ef !important;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 5px 16px rgb(69 44 26 / 13%);
+}
+
+.enquiry-cta .cta-outline svg {
+  width: 18px;
+  height: 18px;
+}
+
+.enquiry-cta .cta-outline:hover {
+  background: #765137 !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* Warm espresso footer */
+.site-footer {
+  background: #35271d;
+  color: #f5eee5;
+  padding: 55px max(6vw, calc((100vw - 1260px) / 2)) 22px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 42px;
+}
+
+.footer-brand p {
+  color: #e8d8c5;
+}
+
+.footer-links .eyebrow {
+  color: #c9a36b;
+  letter-spacing: 0.12em;
+}
+
+.footer-links a,
+.footer-links span:not(.eyebrow) {
+  color: #f5eee5;
+}
+
+.footer-links a:hover {
+  color: #c9a36b;
+}
+
+/* Instagram on a single row */
+.footer-links a[href*="instagram"] {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 9px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.footer-links a[href*="instagram"] svg {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Gold footer CTA */
+.footer-project-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  min-height: 42px;
+  padding: 10px 16px;
+  margin-top: 8px;
+  border: 1px solid #bd925b;
+  border-radius: 999px;
+  background: #59391f;
+  color: #fff8ef;
+}
+
+.footer-project-cta:hover {
+  background: #765137;
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgb(201 163 107 / 32%);
+  padding-top: 18px;
+  color: #d9c7b3;
+}
+
+.footer-bottom a {
+  color: #e9d8c5;
+}
+
+/* Tablet and mobile CTA/footer layout */
+@media (max-width: 760px) {
+  .enquiry-cta {
+    min-height: 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    padding: 44px 24px;
+  }
+
+  .enquiry-cta h2 {
+    font-size: clamp(36px, 9vw, 48px);
+  }
+
+  .enquiry-cta .cta-outline {
+    min-width: 200px;
+    min-height: 52px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
