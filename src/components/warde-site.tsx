@@ -668,66 +668,93 @@ export function ProjectDetailPage({ slug }: { slug: string }) {
 
   return (
     <main className="project-detail-page">
-      <PageIntro
-        eyebrow={`PROJECT 0${projectIndex + 1} · WARDE INTERIORS`}
-        title={project.title}
-        lead={project.description}
-      />
+      {/* DIGITAL JOURNAL */}
+      <section className="project-journal">
+        <div className="project-journal-heading">
+          <span className="eyebrow">
+            WARDE INTERIORS · PROJECT 0{projectIndex + 1}
+          </span>
 
-      <figure className="detail-cover">
-        <img
-          src={project.image}
-          alt={`${project.title} — Residential interiors by Warde Interiors`}
-        />
-        <figcaption>
-          {project.title} · Warde Interiors
-        </figcaption>
-      </figure>
+          <h1>{project.title}</h1>
 
-      <section className="detail-copy section-wrap">
-        <div>
-          <p className="eyebrow">THE PROJECT</p>
-          <h2>{project.title}</h2>
+          <span className="project-journal-label">
+            DIGITAL JOURNAL
+          </span>
         </div>
 
-        <div className="project-facts">
-          <div>
-            <span>LOCATION</span>
-            <p>{project.location}</p>
+        <div className="project-journal-grid">
+          <figure className="journal-image journal-image--hero">
+            <img
+              src={project.image}
+              alt={`${project.title} — Interior design`}
+            />
+          </figure>
+
+          {project.gallery.map((galleryImage, index) => (
+            <figure
+              className={`journal-image journal-image--${index + 1}`}
+              key={`${project.slug}-journal-${index}`}
+            >
+              <img
+                src={galleryImage}
+                alt={`${project.title} — Journal image ${index + 1}`}
+                loading="lazy"
+              />
+            </figure>
+          ))}
+        </div>
+
+        <div className="project-journal-footer">
+          <span>{project.location}</span>
+          <span>{project.configuration}</span>
+        </div>
+      </section>
+
+      {/* PROJECT DESCRIPTION */}
+      <section className="project-story section-wrap">
+        <div className="project-story-heading">
+          <span className="eyebrow">THE PROJECT</span>
+
+          <h2>{project.title}</h2>
+
+          <div className="project-story-rule" />
+        </div>
+
+        <div className="project-story-content">
+          <div className="project-story-facts">
+            <div>
+              <span>LOCATION</span>
+              <p>{project.location}</p>
+            </div>
+
+            <div>
+              <span>PROJECT TYPE</span>
+              <p>{project.configuration}</p>
+            </div>
+
+            <div>
+              <span>DESIGN STUDIO</span>
+              <p>Warde Interiors</p>
+            </div>
           </div>
 
-          <div>
-            <span>PROJECT TYPE</span>
-            <p>{project.configuration}</p>
-          </div>
-
-          <div>
-            <span>DESIGN STUDIO</span>
-            <p>Warde Interiors</p>
+          <div className="project-story-description">
+            {project.description
+              .split("\n\n")
+              .map((paragraph, index) => (
+                <p key={`${project.slug}-description-${index}`}>
+                  {paragraph}
+                </p>
+              ))}
           </div>
         </div>
       </section>
 
-      {project.gallery.length > 0 && (
-        <section className="detail-gallery detail-gallery--editorial section-wrap">
-          {project.gallery.map((galleryImage, index) => (
-            <figure key={`${project.slug}-${index}`}>
-              <img
-                src={galleryImage}
-                alt={`${project.title} — Interior detail ${index + 1}`}
-                loading="lazy"
-              />
-              <figcaption>
-                {project.title} · Interior detail
-              </figcaption>
-            </figure>
-          ))}
-        </section>
-      )}
-
+      {/* NEXT PROJECT */}
       {next && (
         <div className="next-project section-wrap">
           <span className="eyebrow">NEXT PROJECT</span>
+
           <Link
             to="/projects/$slug"
             params={{ slug: next.slug }}
