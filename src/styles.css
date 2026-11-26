@@ -1430,13 +1430,17 @@ figcaption { padding-top: 9px; color: var(--muted-foreground); font-size: 10px; 
 
 .home-hero {
   position: relative;
-  min-height: max(700px, 100svh);
+  width: calc(100% - 64px);
+  max-width: 1440px;
+  min-height: 82vh;
+  margin: 100px auto 40px;
   display: flex;
   align-items: center;
   overflow: hidden;
   isolation: isolate;
   background: #72543D;
   color: #FFF9F0;
+  border-radius: 18px;
 }
 
 .home-hero > img {
